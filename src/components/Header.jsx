@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-const Header = ({ onSearch, onToggleSidebar }) => {
+const Header = ({ searchQuery, onSearch, onToggleSidebar }) => {
     return (
         <header className="site-header">
             <div className="header-left">
@@ -16,13 +16,14 @@ const Header = ({ onSearch, onToggleSidebar }) => {
 
             <div className="header-content">
                 <nav>
-                    <Link to="/samples" className="nav-link desktop-only">Samples</Link>
-                    <Link to="/tools" className="nav-link desktop-only">Tools</Link>
-                    <Link to="/personal-projects" className="nav-link desktop-only">Personal Projects</Link>
+                    <Link to="/samples" className="nav-link desktop-only">SAMPLES</Link>
+                    <Link to="/tools" className="nav-link desktop-only">TOOLS</Link>
+                    <Link to="/personal-projects" className="nav-link desktop-only">PERSONAL</Link>
 
                     <div className="search-container">
                         <input
                             type="text"
+                            value={searchQuery || ''}
                             placeholder="Search projects..."
                             className="search-input"
                             onChange={(e) => onSearch(e.target.value)}
