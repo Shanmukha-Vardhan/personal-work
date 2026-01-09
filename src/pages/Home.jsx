@@ -1,6 +1,7 @@
 import React from 'react';
 import { projects } from '../data/projects';
 import ProjectCard from '../components/ProjectCard';
+import Hero from '../components/Hero';
 
 const Home = ({ category, searchQuery = '' }) => {
     // Filter projects based on category AND search query
@@ -41,7 +42,8 @@ const Home = ({ category, searchQuery = '' }) => {
 
     return (
         <main className="home-container">
-            {/* Minimal spacing at top is handled by CSS (padding-top on main) */}
+            {/* Show Hero only when no search query is present to keep it clean */}
+            {!searchQuery && <Hero />}
 
             <div className="all-projects">
                 <div className="project-grid">
