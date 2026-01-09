@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --bg-color: #0a0a0a;
+  --bg-color: #ffffff;
+  /* Reverting to white as requested */
   /* Switching to dark mode for "amazing" feel */
-  --bg-secondary: #121212;
-  --text-primary: #ededed;
-  --text-secondary: #a1a1a1;
-  --accent-color: #3b82f6;
+  --bg-secondary: #f9f9f9;
+  --text-primary: #111111;
+  --text-secondary: #555555;
+  --accent-color: #000000;
   /* A subtle blue highlight */
-  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-bg: transparent;
   --transition-speed: 0.4s;
 
   /* Typography */
@@ -48,7 +49,7 @@ body {
   position: fixed;
   left: 0;
   top: 0;
-  background-color: #ffffff;
+  background-color: var(--bg-color);
   border-right: 1px solid rgba(0, 0, 0, 0.05);
   padding: 40px 30px;
   display: flex;
@@ -109,9 +110,9 @@ body {
   padding: 40px 60px;
   /* More whitespace */
   z-index: 1000;
-  background: rgba(10, 10, 10, 0.8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: var(--bg-color);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -197,21 +198,23 @@ main {
   font-weight: 600;
   margin-bottom: 24px;
   letter-spacing: -0.02em;
-  background: linear-gradient(to right, #fff, #aaa);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background: none;
+  /* Remove gradient for cleaner look or keep subtle */
+  color: var(--text-primary);
+  -webkit-text-fill-color: initial;
 }
 
 .hero-title .highlight {
   display: block;
   font-family: 'Outfit', sans-serif;
   font-weight: 300;
+  /* Regular weight for contrast */
   font-style: italic;
   color: var(--text-secondary);
+  /* Grey for "Unimagined" on white looks classy */
   /* Fallback */
-  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background: none;
+  -webkit-text-fill-color: initial;
 }
 
 .hero-subtitle {
@@ -227,8 +230,8 @@ main {
   align-items: center;
   gap: 10px;
   padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50px;
   font-size: 0.9rem;
   color: var(--text-primary);
@@ -239,7 +242,8 @@ main {
   height: 8px;
   background-color: #2ecc71;
   border-radius: 50%;
-  box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+  box-shadow: 0 0 0 rgba(46, 204, 113, 0.5);
+  /* Remove glow */
   animation: pulse 2s infinite;
 }
 
@@ -252,13 +256,15 @@ main {
   height: 600px;
   z-index: 1;
   pointer-events: none;
+  opacity: 0.1;
+  /* Very subtle on white */
 }
 
 .gradient-sphere {
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 30% 30%, rgba(59, 130, 246, 0.4), transparent 60%),
-    radial-gradient(circle at 70% 70%, rgba(139, 92, 246, 0.3), transparent 60%);
+  background: radial-gradient(circle at 30% 30%, #000, transparent 60%),
+    radial-gradient(circle at 70% 70%, #555, transparent 60%);
   filter: blur(80px);
   animation: float 10s ease-in-out infinite;
   opacity: 0.6;

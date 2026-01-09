@@ -10,6 +10,7 @@ import Tools from './pages/Tools';
 import Footer from './components/Footer';
 import Contact from './pages/Contact';
 import Uses from './pages/Uses';
+import Projects from './pages/Projects';
 
 function AppContent() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -89,6 +90,7 @@ function AppContent() {
           <Route path="/tools" element={<Home category="tool" searchQuery={searchQuery} />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/uses" element={<Uses />} />
+          <Route path="/projects" element={<Projects searchQuery={searchQuery} />} />
         </Routes>
         <Footer />
       </div>

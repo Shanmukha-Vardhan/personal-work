@@ -40,28 +40,50 @@ const Home = ({ category, searchQuery = '' }) => {
         );
     }
 
+    // Get top 3 featured projects (first 3 for now)
+    const featuredProjects = projects.slice(0, 3);
+
     return (
         <main className="home-container">
-            {/* Show Hero only when no search query is present to keep it clean */}
+            {/* Show Hero only when no search query is present */}
             {!searchQuery && <Hero />}
 
-            <div className="all-projects">
+            <section className="featured-projects" style={{ padding: '0 60px 100px', maxWidth: '1600px', margin: '0 auto' }}>
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'baseline',
+                    marginBottom: '40px'
+                }}>
+                    <h2 style={{
+                        fontSize: '2rem',
+                        fontWeight: '400',
+                        fontFamily: 'var(--font-display)',
+                        color: 'var(--text-primary)'
+                    }}>Featured Work</h2>
+
+                    <a href="/projects" style={{
+                        color: 'var(--text-primary)',
+                        textDecoration: 'none',
+                        borderBottom: '1px solid var(--text-secondary)',
+                        paddingBottom: '2px',
+                        fontSize: '0.9rem',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.05em'
+                    }}>
+                        View All Projects
+                    </a>
+                </div>
+
                 <div className="project-grid">
-                    {/* Combine all projects or filter if search is active */}
-                    {filterProjects(projects).map(project => (
+                    {featuredProjects.map(project => (
                         <ProjectCard
                             key={project.id}
                             project={project}
                         />
                     ))}
-
-                    {filterProjects(projects).length === 0 && (
-                        <p style={{ color: 'var(--text-secondary)', textAlign: 'center', marginTop: '40px', width: '100%' }}>
-                            No projects found.
-                        </p>
-                    )}
                 </div>
-            </div>
+            </section>
         </main>
     );
 };
