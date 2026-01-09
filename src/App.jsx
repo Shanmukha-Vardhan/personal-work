@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import Contact from './pages/Contact';
 import Uses from './pages/Uses';
 import Projects from './pages/Projects';
+import About from './pages/About';
 
 function AppContent() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -85,12 +86,14 @@ function AppContent() {
         />
         <Routes>
           <Route path="/" element={<Home searchQuery={searchQuery} />} />
-          <Route path="/samples" element={<Home category="sample" searchQuery={searchQuery} />} />
-          <Route path="/personal-projects" element={<Home category="personal" searchQuery={searchQuery} />} />
-          <Route path="/tools" element={<Home category="tool" searchQuery={searchQuery} />} />
+          <Route path="/projects" element={<Projects searchQuery={searchQuery} />} />
+          <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/uses" element={<Uses />} />
-          <Route path="/projects" element={<Projects searchQuery={searchQuery} />} />
+          {/* redirects for old links if clicked from elsewhere */}
+          <Route path="/samples" element={<Projects searchQuery={searchQuery} />} />
+          <Route path="/personal-projects" element={<Projects searchQuery={searchQuery} />} />
+          <Route path="/tools" element={<Projects searchQuery={searchQuery} />} />
         </Routes>
         <Footer />
       </div>

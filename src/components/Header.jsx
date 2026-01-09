@@ -16,9 +16,10 @@ const Header = ({ searchQuery, onSearch, onToggleSidebar }) => {
 
             <div className="header-content">
                 <nav>
-                    <Link to="/samples" className="nav-link desktop-only">SAMPLES</Link>
-                    <Link to="/tools" className="nav-link desktop-only">TOOLS</Link>
-                    <Link to="/personal-projects" className="nav-link desktop-only">PERSONAL</Link>
+                    <Link to="/projects" className="nav-link desktop-only">PROJECTS</Link>
+                    <Link to="/about" className="nav-link desktop-only">ABOUT</Link>
+                    <Link to="/uses" className="nav-link desktop-only">USES</Link>
+                    <Link to="/contact" className="nav-link desktop-only">CONTACT</Link>
 
                     <div className="search-container">
                         <input

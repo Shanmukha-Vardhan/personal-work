@@ -4,13 +4,21 @@ import ProjectCard from '../components/ProjectCard';
 import { motion } from 'framer-motion';
 
 const Projects = ({ searchQuery = '' }) => {
-    // Filter projects based on search query
+    const [activeCategory, setActiveCategory] = React.useState('All');
+
+    // Filter projects based on search query AND category
     const filterProjects = (projList) => {
         return projList.filter(p => {
-            if (!searchQuery) return true;
-            const matchesSearch = p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            const matchesSearch = !searchQuery ||
+                p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 p.description.toLowerCase().includes(searchQuery.toLowerCase());
-            return matchesSearch;
+
+            const matchesCategory = activeCategory === 'All' ||
+                (activeCategory === 'Samples' && p.category === 'sample') ||
+                (activeCategory === 'Tools' && p.category === 'tool') ||
+                (activeCategory === 'Personal' && p.category === 'personal');
+
+            return matchesSearch && matchesCategory;
         });
     };
 
@@ -42,6 +50,29 @@ const Projects = ({ searchQuery = '' }) => {
                 }}>
                     A curated collection of my work, ranging from web applications to experimental designs.
                 </p>
+
+                <div className="category-filter" style={{ marginTop: '40px', display: 'flex', gap: '20px' }}>
+                    {['All', 'Samples', 'Tools', 'Personal'].map(category => (
+                        <button
+                            key={category}
+                            onClick={() => setActiveCategory(category)}
+                            style={{
+                                background: 'transparent',
+                                border: 'none',
+                                borderBottom: activeCategory === category ? '2px solid var(--text-primary)' : '2px solid transparent',
+                                color: activeCategory === category ? 'var(--text-primary)' : 'var(--text-secondary)',
+                                padding: '8px 0',
+                                fontSize: '0.9rem',
+                                cursor: 'pointer',
+                                textTransform: 'uppercase',
+                                letterSpacing: '0.1em',
+                                transition: 'all 0.3s ease'
+                            }}
+                        >
+                            {category}
+                        </button>
+                    ))}
+                </div>
             </motion.div>
 
             <div className="project-grid">
