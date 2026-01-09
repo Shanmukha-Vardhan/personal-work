@@ -35,7 +35,53 @@ const About = () => {
                     </p>
                 </div>
 
-                <div className="skills-section" style={{ marginTop: '60px' }}>
+                <div className="stats-grid" style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                    gap: '40px',
+                    margin: '60px 0',
+                    textAlign: 'left'
+                }}>
+                    <div>
+                        <span style={{ display: 'block', fontSize: '3rem', fontWeight: '700', color: 'var(--text-primary)' }}>15+</span>
+                        <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Projects Completed</span>
+                    </div>
+                    <div>
+                        <span style={{ display: 'block', fontSize: '3rem', fontWeight: '700', color: 'var(--text-primary)' }}>3+</span>
+                        <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Years Experience</span>
+                    </div>
+                    <div>
+                        <span style={{ display: 'block', fontSize: '3rem', fontWeight: '700', color: 'var(--text-primary)' }}>100%</span>
+                        <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Client Satisfaction</span>
+                    </div>
+                </div>
+
+                <div className="learning-section" style={{ marginBottom: '60px' }}>
+                    <h3 style={{
+                        fontSize: '1.5rem',
+                        fontWeight: '400',
+                        marginBottom: '20px',
+                        fontFamily: 'var(--font-display)',
+                        color: 'var(--text-primary)'
+                    }}>Currently Exploring</h3>
+                    <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '16px',
+                        background: 'rgba(0,0,0,0.02)',
+                        padding: '20px',
+                        borderRadius: '12px',
+                        border: '1px solid rgba(0,0,0,0.05)'
+                    }}>
+                        <div style={{ fontSize: '2rem' }}>📐</div>
+                        <div>
+                            <h4 style={{ margin: 0, fontWeight: '600', color: 'var(--text-primary)' }}>Advanced Three.js & WebGL</h4>
+                            <p style={{ margin: '4px 0 0', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Pushing the boundaries of 3D web experiences.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="skills-section">
                     <h3 style={{
                         fontSize: '1.5rem',
                         fontWeight: '400',
@@ -45,15 +91,18 @@ const About = () => {
                     }}>Expertise</h3>
 
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
-                        {['JavaScript (ES6+)', 'React', 'Node.js', 'CSS/SCSS', 'UI/UX Design', 'Git', 'Figma'].map(skill => (
+                        {['JavaScript (ES6+)', 'React', 'Node.js', 'CSS/SCSS', 'UI/UX Design', 'Git', 'Figma', 'Next.js', 'TypeScript', 'Tailwind CSS'].map(skill => (
                             <span key={skill} style={{
                                 padding: '8px 16px',
                                 background: 'rgba(0,0,0,0.03)',
                                 borderRadius: '20px',
                                 fontSize: '0.9rem',
                                 color: 'var(--text-primary)',
-                                border: '1px solid rgba(0,0,0,0.05)'
-                            }}>
+                                border: '1px solid rgba(0,0,0,0.05)',
+                                transition: 'all 0.2s'
+                            }}
+                                className="skill-tag" // Class for hover effect if needed in CSS
+                            >
                                 {skill}
                             </span>
                         ))}

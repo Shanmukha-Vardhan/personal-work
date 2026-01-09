@@ -84,6 +84,34 @@ const Home = ({ category, searchQuery = '' }) => {
                     ))}
                 </div>
             </section>
+
+            <section className="trusted-by" style={{ padding: '0 60px 100px', maxWidth: '1600px', margin: '0 auto', textAlign: 'center' }}>
+                <p style={{
+                    color: 'var(--text-secondary)',
+                    textTransform: 'uppercase',
+                    fontSize: '0.8rem',
+                    letterSpacing: '0.1em',
+                    marginBottom: '40px'
+                }}>Technologies & Tools I Use</p>
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    gap: '60px',
+                    opacity: 0.5,
+                    filter: 'grayscale(100%)',
+                    flexWrap: 'wrap'
+                }}>
+                    {/* Placeholder Logic for "Logos" - utilizing text for now to keep it clean without SVG bloat */}
+                    {['REACT', 'NODE.JS', 'FIGMA', 'NEXT.JS', 'TYPESCRIPT'].map(tech => (
+                        <span key={tech} style={{
+                            fontSize: '1.5rem',
+                            fontWeight: '700',
+                            fontFamily: 'var(--font-display)',
+                            color: 'var(--text-primary)'
+                        }}>{tech}</span>
+                    ))}
+                </div>
+            </section>
         </main>
     );
 };
