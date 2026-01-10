@@ -2,7 +2,6 @@ import React from 'react';
 import { projects } from '../data/projects';
 import ProjectCard from '../components/ProjectCard';
 import Hero from '../components/Hero';
-import GithubHeatmap from '../components/GithubHeatmap';
 
 const Home = ({ category, searchQuery = '' }) => {
     // Filter projects based on category AND search query
@@ -47,14 +46,7 @@ const Home = ({ category, searchQuery = '' }) => {
     return (
         <main className="home-container">
             {/* Show Hero only when no search query is present */}
-            {!searchQuery && (
-                <>
-                    <Hero />
-                    <section style={{ padding: '0 60px 40px', maxWidth: '1600px', margin: '0 auto' }}>
-                        <GithubHeatmap />
-                    </section>
-                </>
-            )}
+            {!searchQuery && <Hero />}
 
             <section className="featured-projects" style={{ padding: '0 60px 100px', maxWidth: '1600px', margin: '0 auto' }}>
                 <div style={{
