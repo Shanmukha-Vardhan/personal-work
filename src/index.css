@@ -182,28 +182,29 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: 80vh;
-  padding: 0 60px;
+  gap: 60px;
+  min-height: 70vh;
+  padding: 60px;
   position: relative;
   overflow: hidden;
-  max-width: 1600px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
 .hero-content {
   z-index: 2;
-  max-width: 60%;
+  flex: 1;
+  max-width: 550px;
 }
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: 5rem;
+  font-size: 4.5rem;
   line-height: 1.1;
   font-weight: 600;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   letter-spacing: -0.02em;
   background: none;
-  /* Remove gradient for cleaner look or keep subtle */
   color: var(--text-primary);
   -webkit-text-fill-color: initial;
 }
@@ -212,20 +213,17 @@ main {
   display: block;
   font-family: 'Outfit', sans-serif;
   font-weight: 300;
-  /* Regular weight for contrast */
   font-style: italic;
   color: var(--text-secondary);
-  /* Grey for "Unimagined" on white looks classy */
-  /* Fallback */
   background: none;
   -webkit-text-fill-color: initial;
 }
 
 .hero-subtitle {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   color: var(--text-secondary);
-  margin-bottom: 40px;
-  max-width: 500px;
+  margin-bottom: 32px;
+  max-width: 400px;
   font-weight: 300;
 }
 
@@ -237,7 +235,7 @@ main {
   background: rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50px;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--text-primary);
 }
 
@@ -247,7 +245,6 @@ main {
   background-color: #2ecc71;
   border-radius: 50%;
   box-shadow: 0 0 0 rgba(46, 204, 113, 0.5);
-  /* Remove glow */
   animation: pulse 2s infinite;
 }
 
@@ -256,6 +253,7 @@ main {
   z-index: 2;
   pointer-events: all;
   flex-shrink: 0;
+  align-self: center;
 }
 
 /* Contribution Widget in Hero */
