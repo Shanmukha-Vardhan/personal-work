@@ -18,7 +18,7 @@ export default async function handler(req, res) {
         return res.status(500).json({ error: 'GitHub token not configured' });
     }
 
-    // GraphQL query for contribution data
+    // GraphQL query for contribution data + repository details
     const query = `
         query($username: String!) {
             user(login: $username) {
@@ -28,7 +28,15 @@ export default async function handler(req, res) {
                 bio
                 followers { totalCount }
                 following { totalCount }
-                repositories(privacy: PUBLIC) { totalCount }
+                repositories(first: 100, privacy: PUBLIC, orderBy: {field: PUSHED_AT, direction: DESC}) {
+                    totalCount
+                    nodes {
+                        name
+                        pushedAt
+                        isArchived
+                        updatedAt
+                    }
+                }
                 contributionsCollection {
                     totalCommitContributions
                     totalPullRequestContributions
@@ -76,6 +84,7 @@ export default async function handler(req, res) {
 
         const user = data.data.user;
         const calendar = user.contributionsCollection.contributionCalendar;
+        const repos = user.repositories.nodes || [];
 
         // Calculate streaks from the calendar data
         const allDays = calendar.weeks.flatMap(week => week.contributionDays);
@@ -110,6 +119,34 @@ export default async function handler(req, res) {
             }
         }
 
+        // Calculate repo stats (active vs archived)
+        const archivedRepos = repos.filter(r => r.isArchived).length;
+        const activeRepos = repos.length - archivedRepos;
+
+        // Get latest push time for activity status
+        const latestPush = repos.length > 0 ? repos[0].pushedAt : null;
+
+        // Calculate activity status
+        let activityStatus = 'inactive';
+        let activityMessage = 'Currently taking a break';
+
+        if (latestPush) {
+            const pushDate = new Date(latestPush);
+            const now = new Date();
+            const hoursSinceLastPush = (now - pushDate) / (1000 * 60 * 60);
+
+            if (hoursSinceLastPush <= 48) {
+                activityStatus = 'active';
+                activityMessage = 'Actively coding';
+            } else if (hoursSinceLastPush <= 168) { // 7 days
+                activityStatus = 'moderate';
+                activityMessage = 'Light activity this week';
+            } else {
+                activityStatus = 'inactive';
+                activityMessage = 'Currently taking a break';
+            }
+        }
+
         // Format response
         const result = {
             user: {
@@ -128,6 +165,16 @@ export default async function handler(req, res) {
                 issues: user.contributionsCollection.totalIssueContributions,
                 currentStreak,
                 longestStreak,
+            },
+            repos: {
+                total: user.repositories.totalCount,
+                active: activeRepos,
+                archived: archivedRepos,
+            },
+            activity: {
+                status: activityStatus,
+                message: activityMessage,
+                lastPush: latestPush,
             },
             calendar: calendar.weeks.map(week => ({
                 days: week.contributionDays.map(day => ({

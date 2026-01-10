@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 const Hero = () => {
-    const [contributionData, setContributionData] = useState(null);
+    const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -10,8 +10,8 @@ const Hero = () => {
             try {
                 const response = await fetch('/api/github');
                 if (!response.ok) throw new Error('Failed to fetch');
-                const data = await response.json();
-                setContributionData(data);
+                const result = await response.json();
+                setData(result);
             } catch (err) {
                 console.error('Failed to fetch GitHub data:', err);
             } finally {
@@ -23,10 +23,8 @@ const Hero = () => {
 
     // Get last 13 weeks (3 months) of data
     const getRecentWeeks = () => {
-        if (!contributionData?.calendar) return [];
-        const allWeeks = contributionData.calendar;
-        // Take only the last 13 weeks
-        return allWeeks.slice(-13);
+        if (!data?.calendar) return [];
+        return data.calendar.slice(-13);
     };
 
     const recentWeeks = getRecentWeeks();
@@ -37,15 +35,12 @@ const Hero = () => {
 
         let total = 0;
         let currentStreak = 0;
-        let tempStreak = 0;
 
-        // Flatten days and count
         const allDays = recentWeeks.flatMap(week => week.days);
         allDays.forEach(day => {
             total += day.count;
         });
 
-        // Current streak (from end)
         const reversed = [...allDays].reverse();
         const today = new Date().toISOString().split('T')[0];
         for (const day of reversed) {
@@ -62,6 +57,24 @@ const Hero = () => {
     };
 
     const stats = getRecentStats();
+
+    // Activity status styling
+    const getActivityStyle = () => {
+        if (!data?.activity) return { color: '#2ecc71', bg: 'rgba(46, 204, 113, 0.1)' };
+
+        switch (data.activity.status) {
+            case 'active':
+                return { color: '#2ecc71', bg: 'rgba(46, 204, 113, 0.1)', dot: '#2ecc71' };
+            case 'moderate':
+                return { color: '#f39c12', bg: 'rgba(243, 156, 18, 0.1)', dot: '#f39c12' };
+            case 'inactive':
+                return { color: '#e74c3c', bg: 'rgba(231, 76, 60, 0.1)', dot: '#e74c3c' };
+            default:
+                return { color: '#2ecc71', bg: 'rgba(46, 204, 113, 0.1)', dot: '#2ecc71' };
+        }
+    };
+
+    const activityStyle = getActivityStyle();
 
     return (
         <section className="hero-section">
@@ -85,14 +98,22 @@ const Hero = () => {
                     Shanmukha Vardhan — Creative Developer & Designer.
                 </motion.p>
 
+                {/* Dynamic Activity Status */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
                     className="hero-status"
+                    style={{
+                        background: activityStyle.bg,
+                        border: `1px solid ${activityStyle.color}20`
+                    }}
                 >
-                    <span className="status-dot"></span>
-                    Available for new projects
+                    <span
+                        className="status-dot"
+                        style={{ backgroundColor: activityStyle.dot }}
+                    ></span>
+                    {loading ? 'Checking activity...' : data?.activity?.message || 'Available for new projects'}
                 </motion.div>
             </div>
 
@@ -104,32 +125,45 @@ const Hero = () => {
             >
                 {/* Contribution Graph - Last 3 Months */}
                 <div className="contribution-widget">
-                    {/* Stats Row */}
+                    {/* Stats Row with Tooltips */}
                     <div className="contribution-stats">
-                        <div className="stat-item">
-                            <span className="stat-value">
-                                {loading ? '...' : stats.total}
-                            </span>
-                            <span className="stat-label">contributions</span>
-                        </div>
-                        <div className="stat-item">
-                            <span className="stat-value">
-                                {loading ? '...' : `${stats.streak}d`}
-                            </span>
-                            <span className="stat-label">streak</span>
-                        </div>
-                        <div className="stat-item">
-                            <span className="stat-value">
-                                {loading ? '...' : contributionData?.user?.publicRepos || 0}
-                            </span>
-                            <span className="stat-label">repos</span>
-                        </div>
+                        <Tooltip
+                            content={`${data?.contributions?.commits || 0} commits, ${data?.contributions?.pullRequests || 0} PRs & ${data?.contributions?.issues || 0} issues in last 90 days`}
+                        >
+                            <div className="stat-item">
+                                <span className="stat-value">
+                                    {loading ? '...' : stats.total}
+                                </span>
+                                <span className="stat-label">contributions</span>
+                            </div>
+                        </Tooltip>
+
+                        <Tooltip
+                            content={`Longest streak: ${data?.contributions?.longestStreak || 0} days`}
+                        >
+                            <div className="stat-item">
+                                <span className="stat-value">
+                                    {loading ? '...' : `${stats.streak}d`}
+                                </span>
+                                <span className="stat-label">streak</span>
+                            </div>
+                        </Tooltip>
+
+                        <Tooltip
+                            content={`${data?.repos?.active || 0} active, ${data?.repos?.archived || 0} archived`}
+                        >
+                            <div className="stat-item">
+                                <span className="stat-value">
+                                    {loading ? '...' : data?.repos?.total || 0}
+                                </span>
+                                <span className="stat-label">repos</span>
+                            </div>
+                        </Tooltip>
                     </div>
 
                     {/* Compact Heatmap Grid */}
                     <div className="contribution-grid">
                         {loading ? (
-                            // Skeleton
                             Array.from({ length: 91 }).map((_, i) => (
                                 <div key={i} className="contribution-cell skeleton" />
                             ))
@@ -165,6 +199,31 @@ const Hero = () => {
                 </div>
             </motion.div>
         </section>
+    );
+};
+
+// Tooltip Component
+const Tooltip = ({ content, children }) => {
+    const [isVisible, setIsVisible] = useState(false);
+
+    return (
+        <div
+            className="tooltip-wrapper"
+            onMouseEnter={() => setIsVisible(true)}
+            onMouseLeave={() => setIsVisible(false)}
+        >
+            {children}
+            {isVisible && (
+                <motion.div
+                    className="tooltip"
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 8 }}
+                >
+                    {content}
+                </motion.div>
+            )}
+        </div>
     );
 };
 
