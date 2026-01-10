@@ -1367,3 +1367,172 @@ main {
     color: black;
   }
 }
+
+/* ===== Lenis Smooth Scroll ===== */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* ===== Text Reveal Animation ===== */
+.word-wrap {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.word {
+  display: inline-block;
+}
+
+.text-reveal {
+  overflow: hidden;
+}
+
+/* ===== CTA Button Styles ===== */
+.cta-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:active {
+  transform: scale(0.98);
+}
+
+/* ===== View All Link ===== */
+.view-all-link:hover {
+  opacity: 0.7;
+  border-color: transparent;
+}
+
+/* ===== Tech Logos Animation ===== */
+.tech-logos:hover {
+  opacity: 1 !important;
+  filter: grayscale(0%) !important;
+}
+
+.tech-item:hover {
+  transform: translateY(-4px);
+  color: var(--accent-primary);
+}
+
+/* ===== Section Titles ===== */
+.section-title {
+  position: relative;
+}
+
+/* ===== GPU Optimizations for Animations ===== */
+.reveal-fade-up,
+.reveal-scale,
+.hero-title,
+.hero-subtitle,
+.hero-visual,
+.project-card {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* ===== Hero Section Enhanced ===== */
+.hero-section {
+  position: relative;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse at 30% 0%,
+      rgba(0, 0, 0, 0.02) 0%,
+      transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ===== Contribution Cell Animation ===== */
+.contribution-cell {
+  animation: cellFadeIn 0.3s ease forwards;
+}
+
+.contribution-cell.skeleton {
+  opacity: 0.3;
+  animation: pulse-skeleton 1.5s ease-in-out infinite;
+}
+
+@keyframes cellFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ===== Smooth Cursor for Links ===== */
+a,
+button,
+.project-card {
+  cursor: pointer;
+}
+
+/* ===== Skill Tags ===== */
+.skill-tag:hover {
+  background: var(--text-primary) !important;
+  color: var(--bg-color) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== About Page Stats ===== */
+.stat-item {
+  transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+  transform: translateY(-5px);
+}
+
+/* ===== Learning Section Hover ===== */
+.learning-section>div:nth-child(2):hover {
+  transform: translateX(10px);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+/* ===== Mobile Responsive About ===== */
+@media (max-width: 768px) {
+  .about-container .stats-grid {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+
+  .about-container h1 {
+    font-size: 2.5rem !important;
+  }
+}

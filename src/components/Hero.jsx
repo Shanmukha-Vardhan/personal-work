@@ -1,9 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState, useRef, useLayoutEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
+    const heroRef = useRef(null);
+    const titleRef = useRef(null);
+    const subtitleRef = useRef(null);
+    const statusRef = useRef(null);
+    const visualRef = useRef(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -19,6 +27,79 @@ const Hero = () => {
             }
         };
         fetchData();
+    }, []);
+
+    // GSAP Animations - use useLayoutEffect to ensure DOM is ready
+    useLayoutEffect(() => {
+        // Small delay to ensure React has rendered
+        const timer = setTimeout(() => {
+            if (!heroRef.current) return;
+
+            const ctx = gsap.context(() => {
+                // Entrance timeline
+                const tl = gsap.timeline();
+
+                tl.fromTo(titleRef.current,
+                    { opacity: 0, y: 80 },
+                    { opacity: 1, y: 0, duration: 1.2, ease: 'power4.out' }
+                )
+                    .fromTo(subtitleRef.current,
+                        { opacity: 0, y: 40 },
+                        { opacity: 1, y: 0, duration: 1, ease: 'power4.out' },
+                        '-=0.8'
+                    )
+                    .fromTo(statusRef.current,
+                        { opacity: 0, y: 30 },
+                        { opacity: 1, y: 0, duration: 0.8, ease: 'power4.out' },
+                        '-=0.6'
+                    )
+                    .fromTo(visualRef.current,
+                        { opacity: 0, x: 100, scale: 0.9 },
+                        { opacity: 1, x: 0, scale: 1, duration: 1.2, ease: 'power4.out' },
+                        '-=1'
+                    );
+
+                // Parallax on scroll - title moves up and fades
+                gsap.to(titleRef.current, {
+                    y: -150,
+                    opacity: 0,
+                    scrollTrigger: {
+                        trigger: heroRef.current,
+                        start: 'top top',
+                        end: 'bottom top',
+                        scrub: 1.5,
+                    }
+                });
+
+                // Subtitle parallax (slower)
+                gsap.to(subtitleRef.current, {
+                    y: -80,
+                    opacity: 0,
+                    scrollTrigger: {
+                        trigger: heroRef.current,
+                        start: 'top top',
+                        end: '80% top',
+                        scrub: 1,
+                    }
+                });
+
+                // Visual parallax (moves up slightly)
+                gsap.to(visualRef.current, {
+                    y: -60,
+                    scrollTrigger: {
+                        trigger: heroRef.current,
+                        start: 'top top',
+                        end: 'bottom top',
+                        scrub: 1.2,
+                    }
+                });
+
+            }, heroRef);
+
+            return () => ctx.revert();
+        }, 100);
+
+        return () => clearTimeout(timer);
     }, []);
 
     // Get last 13 weeks (3 months) of data
@@ -60,7 +141,7 @@ const Hero = () => {
 
     // Activity status styling
     const getActivityStyle = () => {
-        if (!data?.activity) return { color: '#2ecc71', bg: 'rgba(46, 204, 113, 0.1)' };
+        if (!data?.activity) return { color: '#2ecc71', bg: 'rgba(46, 204, 113, 0.1)', dot: '#2ecc71' };
 
         switch (data.activity.status) {
             case 'active':
@@ -77,32 +158,20 @@ const Hero = () => {
     const activityStyle = getActivityStyle();
 
     return (
-        <section className="hero-section">
+        <section className="hero-section" ref={heroRef}>
             <div className="hero-content">
-                <motion.h1
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="hero-title"
-                >
+                <h1 ref={titleRef} className="hero-title">
                     Designing the <br />
                     <span className="highlight">Unimagined.</span>
-                </motion.h1>
+                </h1>
 
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                    className="hero-subtitle"
-                >
+                <p ref={subtitleRef} className="hero-subtitle">
                     Shanmukha Vardhan — Creative Developer & Designer.
-                </motion.p>
+                </p>
 
                 {/* Dynamic Activity Status */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
+                <div
+                    ref={statusRef}
                     className="hero-status"
                     style={{
                         background: activityStyle.bg,
@@ -114,15 +183,10 @@ const Hero = () => {
                         style={{ backgroundColor: activityStyle.dot }}
                     ></span>
                     {loading ? 'Checking activity...' : data?.activity?.message || 'Available for new projects'}
-                </motion.div>
+                </div>
             </div>
 
-            <motion.div
-                className="hero-visual"
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-            >
+            <div className="hero-visual" ref={visualRef}>
                 {/* Contribution Graph - Last 3 Months */}
                 <div className="contribution-widget">
                     {/* Stats Row with Tooltips */}
@@ -170,13 +234,13 @@ const Hero = () => {
                         ) : (
                             recentWeeks.flatMap((week, weekIndex) =>
                                 week.days.map((day, dayIndex) => (
-                                    <motion.div
+                                    <div
                                         key={`${weekIndex}-${dayIndex}`}
                                         className="contribution-cell"
-                                        initial={{ opacity: 0, scale: 0 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        transition={{ delay: weekIndex * 0.03 + dayIndex * 0.01 }}
-                                        style={{ background: day.color || '#161b22' }}
+                                        style={{
+                                            background: day.color || '#161b22',
+                                            animationDelay: `${weekIndex * 0.03 + dayIndex * 0.01}s`
+                                        }}
                                         title={`${day.count} contributions on ${day.date}`}
                                     />
                                 ))
@@ -197,7 +261,7 @@ const Hero = () => {
                         @Shanmukha-Vardhan
                     </a>
                 </div>
-            </motion.div>
+            </div>
         </section>
     );
 };
@@ -214,14 +278,9 @@ const Tooltip = ({ content, children }) => {
         >
             {children}
             {isVisible && (
-                <motion.div
-                    className="tooltip"
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 8 }}
-                >
+                <div className="tooltip">
                     {content}
-                </motion.div>
+                </div>
             )}
         </div>
     );

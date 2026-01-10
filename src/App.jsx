@@ -15,6 +15,10 @@ import About from './pages/About';
 import ScrollProgress from './components/ScrollProgress';
 import NoiseOverlay from './components/NoiseOverlay';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Analytics } from '@vercel/analytics/react';
+
+// GSAP Animations
+import { initSmoothScroll, initScrollReveal } from './utils/animations';
 
 const PageWrapper = ({ children }) => (
   <motion.div
@@ -33,6 +37,30 @@ function AppContent() {
   const [isZenMode, setIsZenMode] = useState(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const { pathname } = useLocation();
+
+  // Initialize smooth scrolling (Lenis) + GSAP ScrollTrigger
+  useEffect(() => {
+    const lenis = initSmoothScroll();
+
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      initScrollReveal();
+    }, 100);
+
+    return () => {
+      clearTimeout(timer);
+      lenis.destroy();
+    };
+  }, []);
+
+  // Re-initialize scroll reveals on route change
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      initScrollReveal();
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [pathname]);
 
   // Scroll to top on route change
   useEffect(() => {
@@ -121,8 +149,6 @@ function AppContent() {
     </div>
   );
 }
-
-import { Analytics } from '@vercel/analytics/react';
 
 function App() {
   return (
