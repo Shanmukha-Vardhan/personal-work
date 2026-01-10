@@ -17,6 +17,10 @@
   --font-body: 'Outfit', sans-serif;
   --font-main: var(--font-body);
   /* fallback */
+  
+  /* New Tokens */
+  --bg-card: #f5f5f5;
+  --accent-primary: #000000;
 }
 
 * {
