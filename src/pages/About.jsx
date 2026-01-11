@@ -6,93 +6,89 @@ gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
     const containerRef = useRef(null);
-    const headingRef = useRef(null);
-    const contentRef = useRef(null);
+    const headerRef = useRef(null);
+    const profileRef = useRef(null);
+    const interestsRef = useRef(null);
     const statsRef = useRef(null);
-    const learningRef = useRef(null);
-    const skillsRef = useRef(null);
+    const avolveRef = useRef(null);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            // Massive heading entrance
-            gsap.fromTo(headingRef.current,
-                { opacity: 0, y: 100, scale: 0.95 },
+            // Header Entrance
+            gsap.fromTo(headerRef.current.children,
+                { y: 60, opacity: 0 },
                 {
-                    opacity: 1,
                     y: 0,
-                    scale: 1,
+                    opacity: 1,
                     duration: 1.2,
-                    ease: 'power4.out',
+                    stagger: 0.15,
+                    ease: 'power3.out',
                     delay: 0.2
                 }
             );
 
-            // Content paragraphs stagger
-            const paragraphs = contentRef.current.querySelectorAll('p');
-            gsap.fromTo(paragraphs,
-                { opacity: 0, y: 40 },
+            // Profile Section Stagger
+            gsap.fromTo(profileRef.current.children,
+                { y: 30, opacity: 0 },
                 {
-                    opacity: 1,
                     y: 0,
+                    opacity: 1,
                     duration: 0.8,
-                    stagger: 0.15,
-                    ease: 'power3.out',
-                    delay: 0.4
+                    stagger: 0.1,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: profileRef.current,
+                        start: 'top 80%',
+                    }
                 }
             );
 
-            // Stats counter animation
-            const statItems = statsRef.current.querySelectorAll('.stat-item');
-            statItems.forEach((item, index) => {
-                gsap.fromTo(item,
-                    { opacity: 0, y: 60, scale: 0.9 },
-                    {
-                        opacity: 1,
-                        y: 0,
-                        scale: 1,
-                        duration: 0.8,
-                        ease: 'back.out(1.5)',
-                        scrollTrigger: {
-                            trigger: statsRef.current,
-                            start: 'top 80%',
-                            toggleActions: 'play none none reverse'
-                        },
-                        delay: index * 0.1
-                    }
-                );
-            });
-
-            // Learning section
-            gsap.fromTo(learningRef.current,
-                { opacity: 0, x: -60 },
+            // Interests List items
+            const listItems = interestsRef.current.querySelectorAll('li');
+            gsap.fromTo(listItems,
+                { x: -20, opacity: 0 },
                 {
-                    opacity: 1,
                     x: 0,
+                    opacity: 1,
+                    stagger: 0.1,
+                    duration: 0.6,
+                    ease: 'back.out(1.5)',
+                    scrollTrigger: {
+                        trigger: interestsRef.current,
+                        start: 'top 85%',
+                    }
+                }
+            );
+
+            // Stats Banner
+            gsap.fromTo(statsRef.current,
+                { scale: 0.95, opacity: 0, y: 20 },
+                {
+                    scale: 1,
+                    opacity: 1,
+                    y: 0,
                     duration: 1,
                     ease: 'power3.out',
                     scrollTrigger: {
-                        trigger: learningRef.current,
-                        start: 'top 85%',
-                        toggleActions: 'play none none reverse'
+                        trigger: statsRef.current,
+                        start: 'top 90%',
                     }
                 }
             );
 
-            // Skills tags with stagger
-            const skillTags = skillsRef.current.querySelectorAll('.skill-tag');
-            gsap.fromTo(skillTags,
-                { opacity: 0, scale: 0.8, y: 20 },
+            // Avolve Section
+            const avolveChildren = avolveRef.current.children;
+            gsap.fromTo(avolveChildren,
+                { y: 40, opacity: 0 },
                 {
-                    opacity: 1,
-                    scale: 1,
                     y: 0,
-                    duration: 0.5,
-                    stagger: 0.05,
-                    ease: 'back.out(2)',
+                    opacity: 1,
+                    stagger: 0.15,
+                    duration: 0.8,
+                    ease: 'power2.out',
                     scrollTrigger: {
-                        trigger: skillsRef.current,
-                        start: 'top 85%',
-                        toggleActions: 'play none none reverse'
+                        trigger: avolveRef.current,
+                        start: 'top 75%',
                     }
                 }
             );
@@ -109,211 +105,239 @@ const About = () => {
             style={{
                 padding: '40px 60px',
                 minHeight: '100vh',
-                paddingTop: '100px',
+                paddingTop: '120px',
                 maxWidth: '1000px',
-                margin: '0 auto'
+                margin: '0 auto',
+                color: 'var(--text-primary)'
             }}
         >
-            {/* Big Statement Heading */}
-            <h1
-                ref={headingRef}
-                style={{
-                    fontSize: 'clamp(2.5rem, 8vw, 5rem)',
-                    fontWeight: '300',
-                    marginBottom: '60px',
+            {/* Header / Hook */}
+            <div ref={headerRef} style={{ marginBottom: '80px' }}>
+                <h1 style={{
+                    fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
+                    fontWeight: '600',
+                    lineHeight: '1.1',
+                    marginBottom: '20px',
                     fontFamily: 'var(--font-display)',
-                    color: 'var(--text-primary)',
-                    lineHeight: '1.1'
-                }}
-            >
-                Building digital<br />
-                <span style={{
-                    fontStyle: 'italic',
-                    fontWeight: '400',
-                    color: 'var(--text-secondary)'
-                }}>experiences</span> that<br />
-                matter.
-            </h1>
-
-            {/* Content */}
-            <div
-                className="about-content"
-                ref={contentRef}
-                style={{
-                    fontSize: '1.2rem',
-                    lineHeight: '1.9',
+                    letterSpacing: '-0.02em'
+                }}>
+                    Building digital experiences that <span style={{ color: 'var(--text-primary)' }}>actually matter</span>
+                </h1>
+                <p style={{
+                    fontSize: 'clamp(1.2rem, 3vw, 2rem)',
+                    fontFamily: 'var(--font-body)',
+                    fontWeight: 300,
                     color: 'var(--text-secondary)',
-                    maxWidth: '700px'
-                }}
-            >
-                <p style={{ marginBottom: '28px' }}>
-                    Hello! I'm Shanmukha Vardhan, a passionate developer and designer who loves building things for the web.
-                    I specialize in creating high-quality web applications that not only work great but look amazing too.
-                </p>
-
-                <p style={{ marginBottom: '28px' }}>
-                    My journey began with a curiosity for how things work on the internet, which quickly turned into a career
-                    fueled by coffee and code. I enjoy working with the latest technologies like React, Node.js, and modern CSS
-                    to bring ideas to life.
-                </p>
-
-                <p style={{ marginBottom: '28px' }}>
-                    When I'm not coding, you can find me exploring new design trends, tweaking my developer setup, or
-                    learning about the next big thing in tech.
+                    fontStyle: 'italic',
+                    opacity: 0.8
+                }}>
+                    (and don’t crash on the first click)
                 </p>
             </div>
 
-            {/* Stats Grid */}
+            {/* Profile & Journey */}
+            <div ref={profileRef} style={{ maxWidth: '750px' }}>
+                <p className="bio-text" style={styles.paragraph}>
+                    Hey, I’m <strong>Shanmukha Vardhan</strong> 👋
+                </p>
+                <p style={styles.paragraph}>
+                    A developer who likes clean code, thoughtful design, and projects that feel alive instead of lifeless rectangles on a screen.
+                </p>
+                <p style={styles.paragraph}>
+                    I build web applications that don’t just work, but feel good to use. The kind where buttons make sense, pages load fast, and users don’t need a manual to survive.
+                </p>
+
+                <div style={{ margin: '60px 0', paddingLeft: '20px', borderLeft: '2px solid var(--text-secondary)' }}>
+                    <p style={{ ...styles.paragraph, fontStyle: 'italic', fontSize: '1.1rem' }}>
+                        "My journey started the usual way: curiosity, broken things, Googling errors at 2 AM, repeat. Somewhere between my first “Hello World” and my fifteenth bug-induced breakdown, this curiosity turned into a genuine love for building things on the web."
+                    </p>
+                </div>
+
+                <p style={styles.paragraph}>
+                    I work mostly with <strong>React, Node.js, and modern CSS</strong>, translating ideas into interfaces that are simple, intuitive, and occasionally satisfying to click.
+                </p>
+            </div>
+
+            {/* Interests List */}
+            <div style={{ margin: '60px 0' }}>
+                <p style={{
+                    fontFamily: 'var(--font-display)',
+                    fontSize: '1.2rem',
+                    marginBottom: '24px',
+                    color: 'var(--text-secondary)'
+                }}>
+                    When I’m not coding, I’m probably:
+                </p>
+                <ul ref={interestsRef} style={{
+                    listStyle: 'none',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '16px',
+                    padding: 0
+                }}>
+                    {[
+                        "tweaking my dev setup for the 17th time",
+                        "exploring design trends I may or may not use",
+                        "learning about the next big tech thing before it becomes a meme"
+                    ].map((item, i) => (
+                        <li key={i} style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '12px',
+                            fontSize: '1.1rem',
+                            color: 'var(--text-primary)'
+                        }}>
+                            <span style={{ color: 'var(--text-secondary)' }}>➔</span> {item}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+
+            {/* Stats Banner */}
             <div
-                className="stats-grid"
                 ref={statsRef}
                 style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(3, 1fr)',
-                    gap: '40px',
-                    margin: '80px 0',
-                    textAlign: 'left',
-                    borderTop: '1px solid rgba(0,0,0,0.1)',
-                    borderBottom: '1px solid rgba(0,0,0,0.1)',
-                    padding: '60px 0'
+                    background: 'var(--bg-card)',
+                    padding: '40px',
+                    borderRadius: '20px',
+                    margin: '100px 0',
+                    border: '1px solid rgba(0,0,0,0.05)',
+                    textAlign: 'center'
                 }}
             >
-                <div className="stat-item">
-                    <span style={{
-                        display: 'block',
-                        fontSize: '4rem',
-                        fontWeight: '700',
-                        color: 'var(--text-primary)',
-                        fontFamily: 'var(--font-display)',
-                        lineHeight: '1'
-                    }}>15+</span>
-                    <span style={{
-                        fontSize: '0.85rem',
-                        color: 'var(--text-secondary)',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.1em',
-                        marginTop: '8px',
-                        display: 'block'
-                    }}>Projects Completed</span>
-                </div>
-                <div className="stat-item">
-                    <span style={{
-                        display: 'block',
-                        fontSize: '4rem',
-                        fontWeight: '700',
-                        color: 'var(--text-primary)',
-                        fontFamily: 'var(--font-display)',
-                        lineHeight: '1'
-                    }}>3+</span>
-                    <span style={{
-                        fontSize: '0.85rem',
-                        color: 'var(--text-secondary)',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.1em',
-                        marginTop: '8px',
-                        display: 'block'
-                    }}>Years Experience</span>
-                </div>
-                <div className="stat-item">
-                    <span style={{
-                        display: 'block',
-                        fontSize: '4rem',
-                        fontWeight: '700',
-                        color: 'var(--text-primary)',
-                        fontFamily: 'var(--font-display)',
-                        lineHeight: '1'
-                    }}>100%</span>
-                    <span style={{
-                        fontSize: '0.85rem',
-                        color: 'var(--text-secondary)',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.1em',
-                        marginTop: '8px',
-                        display: 'block'
-                    }}>Client Satisfaction</span>
-                </div>
+                <p style={{
+                    fontSize: '1.4rem',
+                    fontFamily: 'var(--font-display)',
+                    lineHeight: '1.6',
+                    margin: 0
+                }}>
+                    <strong>15+ projects completed</strong>, countless lessons learned, and still curious.
+                </p>
             </div>
 
-            {/* Currently Exploring */}
-            <div
-                className="learning-section"
-                ref={learningRef}
-                style={{ marginBottom: '80px' }}
-            >
-                <h3 style={{
-                    fontSize: '1.2rem',
-                    fontWeight: '400',
-                    marginBottom: '24px',
-                    fontFamily: 'var(--font-display)',
-                    color: 'var(--text-secondary)',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.1em'
-                }}>Currently Exploring</h3>
+            {/* Avolve Section */}
+            <section ref={avolveRef} style={{ marginTop: '120px' }}>
                 <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '24px',
-                    background: 'rgba(0,0,0,0.02)',
-                    padding: '32px',
-                    borderRadius: '16px',
-                    border: '1px solid rgba(0,0,0,0.05)',
-                    transition: 'all 0.3s ease'
+                    borderTop: '1px solid rgba(0,0,0,0.1)',
+                    paddingTop: '60px',
+                    marginBottom: '60px'
                 }}>
-                    <div style={{ fontSize: '3rem' }}>📐</div>
+                    <h2 style={{
+                        fontSize: 'clamp(2rem, 4vw, 3rem)',
+                        fontFamily: 'var(--font-display)',
+                        marginBottom: '10px'
+                    }}>
+                        Avolve
+                    </h2>
+                    <span style={{
+                        fontSize: '1rem',
+                        color: 'var(--text-secondary)',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.1em'
+                    }}>
+                        (aka: my brain turned into a product)
+                    </span>
+                </div>
+
+                <div style={styles.gridTwoCol}>
                     <div>
-                        <h4 style={{
-                            margin: 0,
-                            fontWeight: '600',
-                            color: 'var(--text-primary)',
-                            fontSize: '1.3rem'
-                        }}>Advanced Three.js & WebGL</h4>
-                        <p style={{
-                            margin: '8px 0 0',
-                            fontSize: '1rem',
-                            color: 'var(--text-secondary)'
-                        }}>Pushing the boundaries of 3D web experiences.</p>
+                        <p style={styles.paragraph}>
+                            Avolve is one of those projects that started with<br />
+                            <em style={{ color: 'var(--text-primary)' }}>“what if this could exist?”</em><br />
+                            and slowly became<br />
+                            <em style={{ color: 'var(--text-primary)' }}>“okay… this actually needs to exist.”</em>
+                        </p>
+                        <p style={styles.paragraph}>
+                            At its core, Avolve is about growth. Personal, digital, and slightly chaotic growth. It’s built to help users reflect, improve, and move forward without feeling like they’re being lectured by a robot.
+                        </p>
+                    </div>
+
+                    <div style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '20px',
+                        justifyContent: 'center'
+                    }}>
+                        <div style={styles.valueCard}>
+                            <span style={styles.valueTitle}>Human</span>
+                            <span style={styles.valueDesc}>Not Clinical</span>
+                        </div>
+                        <div style={styles.valueCard}>
+                            <span style={styles.valueTitle}>Helpful</span>
+                            <span style={styles.valueDesc}>Not Overwhelming</span>
+                        </div>
+                        <div style={styles.valueCard}>
+                            <span style={styles.valueTitle}>Smart</span>
+                            <span style={styles.valueDesc}>But Not Smug</span>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            {/* Skills */}
-            <div className="skills-section" ref={skillsRef}>
-                <h3 style={{
-                    fontSize: '1.2rem',
-                    fontWeight: '400',
-                    marginBottom: '24px',
-                    fontFamily: 'var(--font-display)',
-                    color: 'var(--text-secondary)',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.1em'
-                }}>Expertise</h3>
-
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px' }}>
-                    {['JavaScript (ES6+)', 'React', 'Node.js', 'CSS/SCSS', 'UI/UX Design', 'Git', 'Figma', 'Next.js', 'TypeScript', 'Tailwind CSS', 'GSAP', 'Three.js'].map(skill => (
-                        <span
-                            key={skill}
-                            className="skill-tag"
-                            style={{
-                                padding: '12px 24px',
-                                background: 'rgba(0,0,0,0.03)',
-                                borderRadius: '50px',
-                                fontSize: '0.95rem',
-                                color: 'var(--text-primary)',
-                                border: '1px solid rgba(0,0,0,0.08)',
-                                transition: 'all 0.3s ease',
-                                cursor: 'default'
-                            }}
-                        >
-                            {skill}
-                        </span>
-                    ))}
+                <div style={{ marginTop: '60px', maxWidth: '800px' }}>
+                    <p style={styles.paragraph}>
+                        From system design to UI decisions, everything was built with intention. No random features. No “just because” buttons. Every part earns its place.
+                    </p>
+                    <div style={{
+                        marginTop: '40px',
+                        padding: '30px',
+                        background: 'rgba(0,0,0,0.02)',
+                        borderRadius: '12px',
+                        textAlign: 'center'
+                    }}>
+                        <p style={{
+                            fontSize: '1.2rem',
+                            fontFamily: 'var(--font-display)',
+                            margin: 0,
+                            color: 'var(--text-primary)'
+                        }}>
+                            Avolve isn’t perfect. Neither are people.<br />
+                            <span style={{ color: 'var(--text-secondary)', fontSize: '1rem', marginTop: '10px', display: 'block' }}>That’s kind of the point.</span>
+                        </p>
+                    </div>
                 </div>
-            </div>
+            </section>
 
-            {/* Spacer */}
+            {/* Bottom Spacer */}
             <div style={{ height: '100px' }}></div>
         </main>
     );
+};
+
+const styles = {
+    paragraph: {
+        fontSize: '1.15rem',
+        lineHeight: '1.8',
+        color: 'var(--text-secondary)',
+        marginBottom: '24px',
+        fontWeight: 400
+    },
+    gridTwoCol: {
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+        gap: '60px',
+        alignItems: 'center'
+    },
+    valueCard: {
+        padding: '20px 24px',
+        background: 'var(--bg-card)',
+        borderRadius: '12px',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        border: '1px solid rgba(0,0,0,0.05)'
+    },
+    valueTitle: {
+        fontFamily: 'var(--font-display)',
+        fontWeight: '600',
+        fontSize: '1.2rem',
+        color: 'var(--text-primary)'
+    },
+    valueDesc: {
+        fontSize: '0.9rem',
+        color: 'var(--text-secondary)',
+        textTransform: 'uppercase',
+        letterSpacing: '0.05em'
+    }
 };
 
 export default About;

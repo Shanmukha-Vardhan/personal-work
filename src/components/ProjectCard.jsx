@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const ProjectCard = ({ project }) => {
-    const CardContent = () => (
+    const cardContent = (
         <>
             <div className="project-image">
                 <img src={project.image} alt={project.title} loading="lazy" />
@@ -38,7 +38,7 @@ const ProjectCard = ({ project }) => {
                     }
                 }}
             >
-                <CardContent />
+                {cardContent}
             </motion.a>
         );
     }
@@ -52,7 +52,7 @@ const ProjectCard = ({ project }) => {
             viewport={{ once: true }}
             whileHover="hover"
         >
-            <CardContent />
+            {cardContent}
         </motion.div>
     );
 };
