@@ -12,6 +12,7 @@ import Contact from './pages/Contact';
 import Uses from './pages/Uses';
 import Projects from './pages/Projects';
 import About from './pages/About';
+import Avolve from './pages/Avolve';
 import ScrollProgress from './components/ScrollProgress';
 import NoiseOverlay from './components/NoiseOverlay';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -138,6 +139,7 @@ function AppContent() {
             {/* redirects for old links if clicked from elsewhere */}
             <Route path="/samples" element={<PageWrapper><Projects searchQuery={searchQuery} /></PageWrapper>} />
             <Route path="/personal-projects" element={<PageWrapper><Projects searchQuery={searchQuery} /></PageWrapper>} />
+            <Route path="/avolve" element={<PageWrapper><Avolve /></PageWrapper>} />
             <Route path="/tools" element={<PageWrapper><Projects searchQuery={searchQuery} /></PageWrapper>} />
           </Routes>
         </AnimatePresence>

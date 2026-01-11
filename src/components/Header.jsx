@@ -16,6 +16,7 @@ const Header = ({ searchQuery, onSearch, onToggleSidebar }) => {
 
             <div className="header-content">
                 <nav>
+                    <Link to="/avolve" className="nav-link desktop-only" style={{ color: 'var(--text-primary)', fontWeight: '600' }}>AVOLVE</Link>
                     <Link to="/projects" className="nav-link desktop-only">PROJECTS</Link>
                     <Link to="/about" className="nav-link desktop-only">ABOUT</Link>
                     <Link to="/uses" className="nav-link desktop-only">USES</Link>

@@ -48,6 +48,31 @@ const Home = ({ category, searchQuery = '' }) => {
             {/* Show Hero only when no search query is present */}
             {!searchQuery && <Hero />}
 
+            {/* Avolve CTA - Dynamic & Prominent */}
+            {!searchQuery && (
+                <div style={{ textAlign: 'center', marginBottom: '80px', marginTop: '-40px', position: 'relative', zIndex: 10 }}>
+                    <a href="/avolve" style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '10px',
+                        padding: '12px 30px',
+                        background: 'var(--text-primary)',
+                        color: 'var(--bg-color)',
+                        borderRadius: '50px',
+                        textDecoration: 'none',
+                        fontFamily: 'var(--font-display)',
+                        fontWeight: '600',
+                        fontSize: '0.9rem',
+                        letterSpacing: '0.05em',
+                        boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
+                        transition: 'transform 0.2s ease'
+                    }}>
+                        <span>✨ Introducing Avolve</span>
+                        <span style={{ opacity: 0.7 }}>→</span>
+                    </a>
+                </div>
+            )}
+
             {/* Featured Work Section - reveal on scroll */}
             <section
                 className="featured-projects reveal-fade-up"

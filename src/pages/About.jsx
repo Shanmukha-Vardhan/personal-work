@@ -10,7 +10,6 @@ const About = () => {
     const profileRef = useRef(null);
     const interestsRef = useRef(null);
     const statsRef = useRef(null);
-    const avolveRef = useRef(null);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -76,22 +75,7 @@ const About = () => {
                 }
             );
 
-            // Avolve Section
-            const avolveChildren = avolveRef.current.children;
-            gsap.fromTo(avolveChildren,
-                { y: 40, opacity: 0 },
-                {
-                    y: 0,
-                    opacity: 1,
-                    stagger: 0.15,
-                    duration: 0.8,
-                    ease: 'power2.out',
-                    scrollTrigger: {
-                        trigger: avolveRef.current,
-                        start: 'top 75%',
-                    }
-                }
-            );
+
 
         }, containerRef);
 
@@ -215,87 +199,7 @@ const About = () => {
                 </p>
             </div>
 
-            {/* Avolve Section */}
-            <section ref={avolveRef} style={{ marginTop: '120px' }}>
-                <div style={{
-                    borderTop: '1px solid rgba(0,0,0,0.1)',
-                    paddingTop: '60px',
-                    marginBottom: '60px'
-                }}>
-                    <h2 style={{
-                        fontSize: 'clamp(2rem, 4vw, 3rem)',
-                        fontFamily: 'var(--font-display)',
-                        marginBottom: '10px'
-                    }}>
-                        Avolve
-                    </h2>
-                    <span style={{
-                        fontSize: '1rem',
-                        color: 'var(--text-secondary)',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.1em'
-                    }}>
-                        (aka: my brain turned into a product)
-                    </span>
-                </div>
-
-                <div style={styles.gridTwoCol}>
-                    <div>
-                        <p style={styles.paragraph}>
-                            Avolve is one of those projects that started with<br />
-                            <em style={{ color: 'var(--text-primary)' }}>“what if this could exist?”</em><br />
-                            and slowly became<br />
-                            <em style={{ color: 'var(--text-primary)' }}>“okay… this actually needs to exist.”</em>
-                        </p>
-                        <p style={styles.paragraph}>
-                            At its core, Avolve is about growth. Personal, digital, and slightly chaotic growth. It’s built to help users reflect, improve, and move forward without feeling like they’re being lectured by a robot.
-                        </p>
-                    </div>
-
-                    <div style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: '20px',
-                        justifyContent: 'center'
-                    }}>
-                        <div style={styles.valueCard}>
-                            <span style={styles.valueTitle}>Human</span>
-                            <span style={styles.valueDesc}>Not Clinical</span>
-                        </div>
-                        <div style={styles.valueCard}>
-                            <span style={styles.valueTitle}>Helpful</span>
-                            <span style={styles.valueDesc}>Not Overwhelming</span>
-                        </div>
-                        <div style={styles.valueCard}>
-                            <span style={styles.valueTitle}>Smart</span>
-                            <span style={styles.valueDesc}>But Not Smug</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div style={{ marginTop: '60px', maxWidth: '800px' }}>
-                    <p style={styles.paragraph}>
-                        From system design to UI decisions, everything was built with intention. No random features. No “just because” buttons. Every part earns its place.
-                    </p>
-                    <div style={{
-                        marginTop: '40px',
-                        padding: '30px',
-                        background: 'rgba(0,0,0,0.02)',
-                        borderRadius: '12px',
-                        textAlign: 'center'
-                    }}>
-                        <p style={{
-                            fontSize: '1.2rem',
-                            fontFamily: 'var(--font-display)',
-                            margin: 0,
-                            color: 'var(--text-primary)'
-                        }}>
-                            Avolve isn’t perfect. Neither are people.<br />
-                            <span style={{ color: 'var(--text-secondary)', fontSize: '1rem', marginTop: '10px', display: 'block' }}>That’s kind of the point.</span>
-                        </p>
-                    </div>
-                </div>
-            </section>
+            {/* Removed Avolve Section (Moved to /avolve) */}
 
             {/* Bottom Spacer */}
             <div style={{ height: '100px' }}></div>

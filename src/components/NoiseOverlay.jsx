@@ -12,7 +12,7 @@ const NoiseOverlay = () => {
             zIndex: 9998,
             opacity: 0.05,
             background: 'url("https://grainy-gradients.vercel.app/noise.svg")',
-            filter: 'contrast(100%) brightness(100%)',
+            // filter: 'contrast(100%) brightness(100%)',
         }} />
     );
 };
