@@ -1,155 +1,265 @@
 export const projects = [
     {
         id: 1,
+        slug: "agency-os",
         title: "AgencyOS",
         description: "A comprehensive agency management dashboard featuring project tracking, deal flow monitoring, and team management.",
+        longDescription: "AgencyOS is a purpose-built dashboard designed to streamline operations for digital agencies. It consolidates project management, client relations, and financial tracking into a single, intuitive interface.",
+        challenge: "Agencies often struggle with fragmented tools—using Trello for tasks, Hubspot for CRM, and spreadsheets for finance. This leads to data silos and inefficiency.",
+        solution: "I built a unified platform that integrates these core functions. The dashboard provides a high-level overview of agency health while allowing deep dives into specific project metrics.",
         image: "/images/AgencyOs.png",
         link: "https://avolve-agencyos.vercel.app",
         github: "https://github.com/Shanmukha-Vardhan/avolve-agencyos.git",
         category: "sample",
-        tags: ["React", "Dashboard", "Management"]
+        tags: ["React", "Dashboard", "Management"],
+        features: [
+            "Kanban-style project board",
+            "Real-time deal flow analytics",
+            "Team capacity planning",
+            "Client portal for progress tracking"
+        ],
+        techStack: ["React", "Tailwind CSS", "Recharts", "Framer Motion"]
     },
     {
         id: 2,
+        slug: "creator-brand",
         title: "CreatorBrand",
         description: "A personal branding platform for creators to showcase their services, portfolio, and link-in-bio.",
+        longDescription: "CreatorBrand helps digital creators establish a professional online presence without needing to code. It combines a portfolio, service listing, and link-in-bio into one cohesive personal site.",
+        challenge: "Creators need a home base that they own, rather than relying solely on social media algorithms. Existing website builders are often too complex or too generic.",
+        solution: "This platform offers optimized templates specifically for creators, focusing on high conversion for services and newsletter signups.",
         image: "/images/CreatorBrand.png",
         link: "https://avolvecreatorbrand.vercel.app",
         github: "https://github.com/Shanmukha-Vardhan/AvolveCreatorBrand.git",
         category: "sample",
-        tags: ["React", "Branding", "Portfolio"]
+        tags: ["React", "Branding", "Portfolio"],
+        features: [
+            "Customizable 'Link-in-Bio' page",
+            "Service booking integration",
+            "Newsletter signup forms",
+            "SEO-optimized portfolio sections"
+        ],
+        techStack: ["React", "Next.js", "Framer Motion", "Stripe API"]
     },
     {
         id: 3,
+        slug: "codefest-2025",
         title: "CodeFest 2025",
         description: "A cyberpunk-themed event website for a hackathon. Features a terminal-style aesthetic and registration system.",
+        longDescription: "The official portal for CodeFest 2025, designed to immerse participants in a futuristic, cyberpunk atmosphere right from the landing page.",
+        challenge: "Hackathon websites often look corporate and boring. The goal was to build hype and excitement through a unique, thematic UI.",
+        solution: "I used a terminal-inspired aesthetic with CRT effects, glitch animations, and neon typography to capture the hacker spirit.",
         image: "/images/EventWebsite.png",
         link: "https://avolveeventwebsite.vercel.app",
         github: "https://github.com/Shanmukha-Vardhan/AvolveEventwebsite.git",
         category: "sample",
-        tags: ["React", "CSS", "Event"]
+        tags: ["React", "CSS", "Event"],
+        features: [
+            "Retro terminal command interface",
+            "Glitch effect animations",
+            "Countdown timer to event launch",
+            "Registration form with validation"
+        ],
+        techStack: ["React", "CSS3", "GSAP", "Custom Glitch Shaders"]
     },
     {
         id: 4,
+        slug: "focus-timer",
         title: "Focus Timer",
-        description: "A productivity tool designed to enhance focus and time management using the Pomodoro technique. Features customizable timers and a clean, distraction-free interface.",
+        description: "A productivity tool designed to enhance focus and time management using the Pomodoro technique.",
+        longDescription: "Focus Timer is a distraction-free web app that helps users maintain flow state using the Pomodoro technique. It emphasizes minimalism to avoid adding visual clutter to the user's workspace.",
+        challenge: "Most focus apps feature too many bells and whistles that actually distract from the work itself.",
+        solution: "A brutally simple interface that does one thing well: tracks focus intervals. It uses ambient sounds and subtle notifications to keep you on track.",
         image: "/images/timer.png",
         link: "https://focusly-acs.web.app",
         github: null,
         category: "tool",
-        tags: ["React", "Productivity", "Utility"]
+        tags: ["React", "Productivity", "Utility"],
+        features: [
+            "Customizable work/break intervals",
+            "Ambient background noise mixer",
+            "Visual progress ring",
+            "Task session history"
+        ],
+        techStack: ["React", "Web Audio API", "LocalStorage"]
     },
     {
         id: 5,
+        slug: "cut-and-frame",
         title: "Cut & Frame",
         description: "A premium, editorial-style portfolio site for freelancers. Showcases a tech stack and detailed statistics.",
+        longDescription: "Cut & Frame represents a high-end approach to freelancer portfolios, borrowing design language from fashion magazines and editorial layouts.",
+        challenge: "Designers and video editors often struggle to present their work in a way that feels as premium as the work itself.",
+        solution: "This template prioritizes large typography, whitespace, and high-fidelity media rendering to let the work shine.",
         image: "/images/FreelancerWebsite.png",
         link: "https://avolve-freelancer-website.vercel.app",
         github: "https://github.com/Shanmukha-Vardhan/AvolveFreelancerWebsite.git",
         category: "sample",
-        tags: ["React", "Portfolio", "Design"]
+        tags: ["React", "Portfolio", "Design"],
+        features: [],
+        techStack: ["React", "SCSS", "Intersection Observer"]
     },
     {
         id: 6,
+        slug: "pixelkai",
         title: "PixelKai",
-        description: "A mobile-first \"Link-in-Bio\" conversion hub with a vibrant, gamer-centric aesthetic.",
+        description: "A mobile-first 'Link-in-Bio' conversion hub with a vibrant, gamer-centric aesthetic.",
+        longDescription: "PixelKai serves as a central hub for streamers and gaming content creators, aggregating their social presence into one high-conversion page.",
+        challenge: "Gamers need a landing page that reflects their chaotic, vibrant energy without sacrificing usability.",
+        solution: "I designed a UI with bold colors, pixel art influence, and immediate calls-to-action for Twitch and YouTube integration.",
         image: "/images/LinkInBio.png",
         link: "https://avolvelinkinbio.vercel.app",
         github: "https://github.com/Shanmukha-Vardhan/AvolveLinkinbio.git",
         category: "sample",
-        tags: ["React", "Mobile First", "Social"]
+        tags: ["React", "Mobile First", "Social"],
+        features: [],
+        techStack: ["React", "Styled Components"]
     },
     {
         id: 7,
+        slug: "alex-carter-portfolio",
         title: "Alex Carter Portfolio",
-        description: "A minimalist, high-performance personal portfolio featuring a \"bento grid\" project showcase.",
+        description: "A minimalist, high-performance personal portfolio featuring a 'bento grid' project showcase.",
+        longDescription: "A study in minimalism and grid systems. This portfolio uses a 'bento box' layout to organize varied content types—stats, projects, contact info—into a cohesive whole.",
+        challenge: "Organizing disparate information (images, text, links) without the page feeling cluttered.",
+        solution: "The grid layout provides inherent structure, allowing each 'cell' to contain different content while maintaining visual harmony.",
         image: "/images/Portfolio.png",
         link: "https://avolve-alex-portfolio.vercel.app",
         github: "https://github.com/Shanmukha-Vardhan/avolve-alex-portfolio.git",
         category: "sample",
-        tags: ["React", "Portfolio", "Minimalist"]
+        tags: ["React", "Portfolio", "Minimalist"],
+        features: [],
+        techStack: ["React", "CSS Grid", "Framer Motion"]
     },
     {
         id: 8,
+        slug: "studytrack",
         title: "StudyTrack",
         description: "A clean, data-driven SaaS landing page for an educational tracking tool with a modern design.",
+        longDescription: "StudyTrack's landing page is optimized for conversion, explaining complex educational analytics software through clear visuals and simplified copy.",
+        challenge: "Explaining dry analytics features to educators in an engaging way.",
+        solution: "Used clear data visualization assets and a clean, trustworthy blue color palette to convey professionalism and ease of use.",
         image: "/images/StartupLandingPage.png",
         link: "https://avolvestudytrack.vercel.app",
         github: "https://github.com/Shanmukha-Vardhan/AvolveStudyTrack.git",
         category: "sample",
-        tags: ["React", "SaaS", "Education"]
+        tags: ["React", "SaaS", "Education"],
+        features: [],
+        techStack: ["React", "Tailwind CSS"]
     },
     {
         id: 9,
+        slug: "faculty-course-allocator",
         title: "Faculty Course Allocator",
         description: "An intelligent web platform designed to streamline the complex process of assigning subjects to university faculty based on preferences and constraints.",
+        longDescription: "This tool solves the complex constraint satisfaction problem of assigning university courses to faculty members, considering their preferences, seniority, and workload limits.",
+        challenge: "Manual course allocation takes weeks and often results in conflicts or unhappy faculty.",
+        solution: "An algorithmic approach that automates 90% of the matching process, leaving only edge cases for human review.",
         image: "/images/FacultyCourseAllocator.png",
         link: "https://auth-9345d.web.app/login",
         github: null,
         category: "tool",
-        tags: ["React", "Algorithm", "Education"]
+        tags: ["React", "Algorithm", "Education"],
+        features: ["Faculty preference collection forms", "Conflict detection algorithm", "Exportable timetables"],
+        techStack: ["React", "Firebase", "Node.js"]
     },
     {
         id: 10,
+        slug: "worldwide-attendance-calculator",
         title: "Worldwide Attendance Calculator",
-        description: "A universal web tool that helps students track their attendance and visually predict how many classes they can miss while staying above a required threshold.",
+        description: "A universal web tool that helps students track their attendance and visually predict how many classes they can miss.",
+        longDescription: "A simple yet critical utility for university students to manage their attendance requirements proactively.",
+        challenge: "Students often miscalculate their attendance percentage, leading to debarment from exams.",
+        solution: "A dynamic calculator that tells you exactly how many classes you can afford to bunk (or need to attend) to meet the target %.",
         image: "/images/Attandance1.png",
         link: "https://gitam-attendance-calculator.web.app/",
         github: "https://github.com/Shanmukha-Vardhan/attendance-calculator.git",
         category: "tool",
-        tags: ["React", "Utility", "Calculator"]
+        tags: ["React", "Utility", "Calculator"],
+        features: ["'Bunkable' class calculator", "Visual progress bars", "Local storage for data persistence"],
+        techStack: ["React", "Material UI"]
     },
     {
         id: 11,
+        slug: "gitam-attendance-calculator",
         title: "Gitam Attendance Calculator",
-        description: "A full-stack web application for GITAM students, evolving from a simple calculator into a personalized dashboard with secure authentication.",
+        description: "A full-stack web application for GITAM students, evolving from a simple calculator into a personalized dashboard.",
+        longDescription: "The evolution of the simple calculator into a full-fledged student dashboard, integrated specifically with GITAM University's academic structure.",
+        challenge: "Scaling a simple tool into a platform with user accounts and historical data.",
+        solution: "Implemented Firebase Auth and Firestore to save student data across sessions and semesters.",
         image: "/images/mainpage.png",
         link: "https://gitamtracker-8626f.web.app/",
         github: null,
         category: "tool",
-        tags: ["Full Stack", "Auth", "Education"]
+        tags: ["Full Stack", "Auth", "Education"],
+        features: [],
+        techStack: ["React", "Firebase Auth", "Firestore"]
     },
     {
         id: 12,
+        slug: "smart-class-locator",
         title: "Smart Class Locator",
         description: "A web application designed to help university students find their classrooms with ease and efficiency.",
+        longDescription: "Navigating large university campuses can be daunting for new students. This app acts as a specialized 'Google Maps' for the campus building interiors.",
+        challenge: "Physical signage in universities is often outdated or confusing.",
+        solution: "A digital wayfinding solution that allows students to search by room number and see the exact floor and corridor location.",
         image: "/images/Smart Class Locator.png",
         link: null,
         github: "https://github.com/Shanmukha-Vardhan/classroom-app",
         category: "tool",
-        tags: ["React", "Maps", "Utility"]
+        tags: ["React", "Maps", "Utility"],
+        features: [],
+        techStack: ["React", "Leaflet.js"]
     },
     {
         id: 13,
+        slug: "eduquiz-platform",
         title: "EduQuiz Platform",
-        description: "A secure MERN-stack application for educational institutions, streamlining quiz creation, management, and student assessment.",
+        description: "A secure MERN-stack application for educational institutions, streamlining quiz creation and student assessment.",
+        longDescription: "EduQuiz is a robust assessment platform that allows teachers to create timed quizzes and automatically grade them.",
+        challenge: "Online assessments are prone to cheating and difficult to manage at scale.",
+        solution: "Implemented browser-locking features (where possible) and randomized question pools to ensure assessment integrity.",
         image: "/images/quiz-2.png",
         link: "#",
         linkText: "Watch Demo",
         linkAction: "alert",
         github: "https://github.com/Shanmukha-Vardhan/Eduquizz",
         category: "personal",
-        tags: ["MERN", "Full Stack", "Education"]
+        tags: ["MERN", "Full Stack", "Education"],
+        features: ["Teacher & Student specific dashboards", "Real-time timer synchronization", "Auto-grading system"],
+        techStack: ["MongoDB", "Express", "React", "Node.js"]
     },
     {
         id: 14,
+        slug: "password-strength-checker",
         title: "Password Strength Checker",
         description: "A full-stack application that evaluates password security in real time, detects breaches, and provides actionable feedback.",
+        longDescription: "A security education tool that shows users *why* their password is weak, rather than just saying 'Red'.",
+        challenge: "Users often ignore generic password advice.",
+        solution: "Visual feedback using entropy calculation and dictionary checks to explain vulnerabilities in real-time.",
         image: "/images/password.png",
         link: "https://password-strength-checker-lilac.vercel.app",
         github: "https://github.com/Shanmukha-Vardhan/password-strength-checker",
         category: "tool",
-        tags: ["Security", "Full Stack", "Utility"]
+        tags: ["Security", "Full Stack", "Utility"],
+        features: ["Entropy score calculation", "Common password dictionary check", "Brute-force time estimation"],
+        techStack: ["React", "Node.js", "Zxcvbn library"]
     },
     {
         id: 15,
+        slug: "initial-low-fidelity-design",
         title: "Initial Low-Fidelity Design",
-        description: "A complete low-fidelity prototype created in Figma, mapping user processes, identifying obstacles, and designing an interactive login flow.",
+        description: "A complete low-fidelity prototype created in Figma, mapping user processes and designing an interactive login flow.",
+        longDescription: "The blueprint phase for a larger application. This project focuses on UX research, wireframing, and user flow validation before any code was written.",
+        challenge: "Validating complex user flows without expensive development cycles.",
+        solution: "Rapid prototyping in Figma to test assumptions with potential users.",
         image: "/images/Initial Low-Fidelity Design.png",
         link: "https://www.figma.com/proto/ir6IdD2TxM33Io9x72kicV/Lofi-1?node-id=0-1&t=W0VXxiDDLp2VZKKI-1",
         linkText: "View Prototype",
         github: null,
         category: "personal",
-        tags: ["Figma", "Design", "Prototype"]
+        tags: ["Figma", "Design", "Prototype"],
+        features: [],
+        techStack: ["Figma", "FigJam"]
     }
 ];

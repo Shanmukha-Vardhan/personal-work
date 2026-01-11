@@ -13,6 +13,7 @@ import Uses from './pages/Uses';
 import Projects from './pages/Projects';
 import About from './pages/About';
 import Avolve from './pages/Avolve';
+import ProjectDetail from './pages/ProjectDetail';
 import ScrollProgress from './components/ScrollProgress';
 import NoiseOverlay from './components/NoiseOverlay';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -133,6 +134,7 @@ function AppContent() {
           <Routes location={useLocation()} key={useLocation().pathname}>
             <Route path="/" element={<PageWrapper><Home searchQuery={searchQuery} /></PageWrapper>} />
             <Route path="/projects" element={<PageWrapper><Projects searchQuery={searchQuery} /></PageWrapper>} />
+            <Route path="/projects/:slug" element={<PageWrapper><ProjectDetail /></PageWrapper>} />
             <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
             <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
             <Route path="/uses" element={<PageWrapper><Uses /></PageWrapper>} />
