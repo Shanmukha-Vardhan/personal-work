@@ -256,6 +256,33 @@ main {
   align-self: center;
 }
 
+@media (max-width: 900px) {
+  .hero-section {
+    flex-direction: column;
+    padding: 100px 30px 40px;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .hero-visual {
+    width: 100%;
+    align-self: center;
+  }
+
+  .contribution-widget {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
 /* Contribution Widget in Hero */
 .contribution-widget {
   background: rgba(0, 0, 0, 0.03);
