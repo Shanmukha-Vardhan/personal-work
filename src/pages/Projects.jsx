@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { projects } from '../data/projects';
 import ProjectCard from '../components/ProjectCard';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 
 const Projects = ({ searchQuery = '' }) => {
     const [activeCategory, setActiveCategory] = React.useState('All');
@@ -30,6 +31,11 @@ const Projects = ({ searchQuery = '' }) => {
 
     return (
         <main className="projects-page-container" style={{ padding: '40px 60px', minHeight: '100vh', paddingTop: '100px' }}>
+            <SEO
+                title="Projects"
+                description="Explore my curated collection of web applications, tools, and experimental designs. From mental health apps to developer utilities."
+                url="https://shanmukhavardhan.com/projects"
+            />
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

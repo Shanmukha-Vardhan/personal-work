@@ -2,6 +2,7 @@ import React from 'react';
 import { projects } from '../data/projects';
 import ProjectCard from '../components/ProjectCard';
 import Hero from '../components/Hero';
+import SEO from '../components/SEO';
 
 const Home = ({ category, searchQuery = '' }) => {
     // Filter projects based on category AND search query
@@ -45,6 +46,11 @@ const Home = ({ category, searchQuery = '' }) => {
 
     return (
         <main className="home-container">
+            <SEO
+                title="Shanmukha Vardhan"
+                description="Creative Developer & Designer building thoughtful digital experiences. Currently working on Avolve, a mental health companion with 500+ active users."
+                url="https://shanmukhavardhan.com"
+            />
             {/* Show Hero only when no search query is present */}
             {!searchQuery && <Hero />}
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import SEO from '../components/SEO';
 
 const Contact = () => {
     const containerRef = useRef(null);
@@ -49,6 +50,11 @@ const Contact = () => {
 
     return (
         <main className="page-container" ref={containerRef} style={{ maxWidth: '1200px', margin: '0 auto', padding: '120px 20px 60px' }}>
+            <SEO
+                title="Contact"
+                description="Get in touch with Shanmukha Vardhan. Available for freelance work and full-time opportunities. Let's build something great together."
+                url="https://shanmukhavardhan.com/contact"
+            />
             <h1 className="hero-title contact-title" style={{ fontSize: 'clamp(3rem, 5vw, 4.5rem)', marginBottom: '60px', textAlign: 'center' }}>
                 Let's <span className="highlight">Connect</span>
             </h1>

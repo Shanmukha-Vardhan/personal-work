@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import SEO from '../components/SEO';
 
 const tools = [
     {
@@ -85,6 +86,11 @@ const Uses = () => {
 
     return (
         <main className="page-container" ref={containerRef} style={{ maxWidth: '1000px', margin: '0 auto', padding: '120px 20px 60px' }}>
+            <SEO
+                title="Uses"
+                description="Hardware, software, and tools I use daily. From MacBook Air to VS Code, Figma, and Vercel — everything that powers my workflow."
+                url="https://shanmukhavardhan.com/uses"
+            />
             <header className="uses-header" style={{ marginBottom: '80px' }}>
                 <h1 className="hero-title" style={{ fontSize: 'clamp(3rem, 5vw, 4.5rem)', marginBottom: '20px' }}>Uses</h1>
                 <p className="hero-subtitle" style={{ maxWidth: '600px' }}>

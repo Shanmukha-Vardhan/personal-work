@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -103,6 +104,11 @@ const Avolve = () => {
             }}
         >
             <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 40px' }}>
+                <SEO
+                    title="Avolve | Mental Health Companion"
+                    description="Avolve is a calm, intentional mental health companion. Built to feel supportive without being overwhelming. Handling 500+ active users."
+                    url="https://shanmukhavardhan.com/avolve"
+                />
 
                 {/* Hero */}
                 <header ref={heroRef} style={{ textAlign: 'center', marginBottom: '140px' }}>
