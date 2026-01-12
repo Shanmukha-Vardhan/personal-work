@@ -3,31 +3,43 @@ import gsap from 'gsap';
 
 const tools = [
     {
-        category: "Workstation",
+        category: "💻 Workstation",
         items: [
-            { name: "MacBook Air M2", desc: "Midnight, 16GB RAM. Silent, fast, and perfect for development on the go." },
-            { name: "LG 27\" 4K Monitor", desc: "Pixel-perfect display for interface design and coding." },
-            { name: "Keychron K2", desc: "Mechanical keyboard (Gateron Brown) for that tactile feel." },
-            { name: "Logitech MX Master 3S", desc: "The productivity mouse standard for a reason." }
+            { name: "MacBook Air (Apple Silicon)", desc: "Primary development machine." },
+            { name: "iPad Air (M1)", desc: "Secondary device for design reviews, testing layouts, reading docs, and sketching ideas when a keyboard feels like too much." }
         ]
     },
     {
-        category: "Development",
+        category: "👨‍💻 Development Tools",
         items: [
-            { name: "VS Code", desc: "My editor of choice, heavily customized with extensions." },
-            { name: "Arc Browser", desc: "A browser that actually feels like a modern operating system." },
-            { name: "iTerm2 + Oh My Zsh", desc: "Terminal workflow power with autosuggestions." },
-            { name: "Figma", desc: "Where all designs start before a single line of code is written." },
-            { name: "GitHub Desktop", desc: "Clean interface for managing version control." }
+            { name: "VS Code", desc: "Main editor for frontend and backend work." },
+            { name: "Terminal (macOS / iTerm)", desc: "For running projects, managing packages, and Git." },
+            { name: "Git & GitHub", desc: "Version control, collaboration, and activity tracking." },
+            { name: "Next.js", desc: "React Framework for production." },
+            { name: "React", desc: "Core frontend library." },
+            { name: "Node.js", desc: "Backend logic and APIs." },
+            { name: "Firebase", desc: "Backend-as-a-Service for realtime apps." },
+            { name: "npm", desc: "Package management." }
         ]
     },
     {
-        category: "Productivity",
+        category: "🎨 Design Tools",
         items: [
-            { name: "Notion", desc: "My second brain. Organization for life and work." },
-            { name: "Raycast", desc: "Spotlight replacement. I use it for literally everything." },
-            { name: "Linear", desc: "Issue tracking and project management done right." },
-            { name: "Cron", desc: "The best calendar experience, hands down." }
+            { name: "Figma", desc: "UI design, layout planning, and component thinking before implementation." }
+        ]
+    },
+    {
+        category: "🚀 Deployment",
+        items: [
+            { name: "Vercel", desc: "Hosting and deployment for personal projects and experiments." }
+        ]
+    },
+    {
+        category: "📱 Productivity & Daily Apps",
+        items: [
+            { name: "Notion", desc: "Planning, notes, ideas, and project structure." },
+            { name: "Safari", desc: "Primary browser for development and research." },
+            { name: "Spotify", desc: "Background music while coding." }
         ]
     }
 ];
