@@ -34,7 +34,7 @@ const Projects = ({ searchQuery = '' }) => {
             <SEO
                 title="Projects"
                 description="Explore my curated collection of web applications, tools, and experimental designs. From mental health apps to developer utilities."
-                url="https://shanmukhavardhan.com/projects"
+                url="https://shanmukha-dev.vercel.app/projects"
             />
             <motion.div
                 initial={{ opacity: 0, y: 20 }}

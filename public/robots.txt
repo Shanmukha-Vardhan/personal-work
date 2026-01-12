@@ -1,10 +1,10 @@
-# robots.txt for shanmukhavardhan.com
+# robots.txt for shanmukha-dev.vercel.app
 
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://shanmukhavardhan.com/sitemap.xml
+Sitemap: https://shanmukha-dev.vercel.app/sitemap.xml
 
 # Crawl-delay (optional, be polite to bots)
 Crawl-delay: 1

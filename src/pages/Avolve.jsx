@@ -107,7 +107,7 @@ const Avolve = () => {
                 <SEO
                     title="Avolve | Mental Health Companion"
                     description="Avolve is a calm, intentional mental health companion. Built to feel supportive without being overwhelming. Handling 500+ active users."
-                    url="https://shanmukhavardhan.com/avolve"
+                    url="https://shanmukha-dev.vercel.app/avolve"
                 />
 
                 {/* Hero */}

@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://shanmukhavardhan.com/</loc>
+    <loc>https://shanmukha-dev.vercel.app/</loc>
     <lastmod>2026-01-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://shanmukhavardhan.com/about</loc>
+    <loc>https://shanmukha-dev.vercel.app/about</loc>
     <lastmod>2026-01-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://shanmukhavardhan.com/projects</loc>
+    <loc>https://shanmukha-dev.vercel.app/projects</loc>
     <lastmod>2026-01-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://shanmukhavardhan.com/avolve</loc>
+    <loc>https://shanmukha-dev.vercel.app/avolve</loc>
     <lastmod>2026-01-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://shanmukhavardhan.com/uses</loc>
+    <loc>https://shanmukha-dev.vercel.app/uses</loc>
     <lastmod>2026-01-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://shanmukhavardhan.com/contact</loc>
+    <loc>https://shanmukha-dev.vercel.app/contact</loc>
     <lastmod>2026-01-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

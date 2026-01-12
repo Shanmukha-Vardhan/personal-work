@@ -89,7 +89,7 @@ const Uses = () => {
             <SEO
                 title="Uses"
                 description="Hardware, software, and tools I use daily. From MacBook Air to VS Code, Figma, and Vercel — everything that powers my workflow."
-                url="https://shanmukhavardhan.com/uses"
+                url="https://shanmukha-dev.vercel.app/uses"
             />
             <header className="uses-header" style={{ marginBottom: '80px' }}>
                 <h1 className="hero-title" style={{ fontSize: 'clamp(3rem, 5vw, 4.5rem)', marginBottom: '20px' }}>Uses</h1>

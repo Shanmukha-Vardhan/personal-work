@@ -49,7 +49,7 @@ const Home = ({ category, searchQuery = '' }) => {
             <SEO
                 title="Shanmukha Vardhan"
                 description="Creative Developer & Designer building thoughtful digital experiences. Currently working on Avolve, a mental health companion with 500+ active users."
-                url="https://shanmukhavardhan.com"
+                url="https://shanmukha-dev.vercel.app"
             />
             {/* Show Hero only when no search query is present */}
             {!searchQuery && <Hero />}

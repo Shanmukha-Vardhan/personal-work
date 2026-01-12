@@ -99,7 +99,7 @@ const About = () => {
             <SEO
                 title="About"
                 description="I'm Shanmukha Vardhan — a creative developer and designer building digital experiences that actually matter. Currently focused on Avolve, a mental health startup."
-                url="https://shanmukhavardhan.com/about"
+                url="https://shanmukha-dev.vercel.app/about"
             />
             {/* Header / Hook */}
             <div ref={headerRef} style={{ marginBottom: '80px' }}>

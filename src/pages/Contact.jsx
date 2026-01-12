@@ -53,7 +53,7 @@ const Contact = () => {
             <SEO
                 title="Contact"
                 description="Get in touch with Shanmukha Vardhan. Available for freelance work and full-time opportunities. Let's build something great together."
-                url="https://shanmukhavardhan.com/contact"
+                url="https://shanmukha-dev.vercel.app/contact"
             />
             <h1 className="hero-title contact-title" style={{ fontSize: 'clamp(3rem, 5vw, 4.5rem)', marginBottom: '60px', textAlign: 'center' }}>
                 Let's <span className="highlight">Connect</span>
