@@ -1793,3 +1793,33 @@ button,
 .contact-social-icon {
   font-size: 1.5rem;
 }
+/* CTA Section Responsive Styles */
+.cta-title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 300;
+  font-family: var(--font-display);
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  line-height: 1.1;
+  word-wrap: break-word;
+}
+
+.cta-highlight {
+  font-style: italic;
+  font-weight: 400;
+  display: inline-block; /* Helps with wrapping */
+}
+
+.cta-text {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  max-width: 500px;
+  margin: 0 auto 40px;
+}
+
+@media (max-width: 600px) {
+  .cta-title {
+    font-size: 2.2rem; /* Even smaller for mobile to prevent overflow */
+  }
+}

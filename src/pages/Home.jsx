@@ -163,25 +163,12 @@ const Home = ({ category, searchQuery = '' }) => {
                     textAlign: 'center'
                 }}
             >
-                <h2 style={{
-                    fontSize: '3.5rem',
-                    fontWeight: '300',
-                    fontFamily: 'var(--font-display)',
-                    color: 'var(--text-primary)',
-                    marginBottom: '24px',
-                    lineHeight: '1.2'
-                }}>
-                    Let's build something<br />
-                    <span style={{ fontStyle: 'italic', fontWeight: '400' }}>extraordinary</span> together.
+                <h2 className="cta-title">
+                    Let’s build something<br />
+                    <span className="cta-highlight">extraordinary</span> together.
                 </h2>
-                <p style={{
-                    color: 'var(--text-secondary)',
-                    fontSize: '1.1rem',
-                    marginBottom: '40px',
-                    maxWidth: '500px',
-                    margin: '0 auto 40px'
-                }}>
-                    Have an exciting project in mind? I'd love to hear about it.
+                <p className="cta-text">
+                    Have an exciting project in mind? I’d love to hear about it.
                 </p>
                 <a
                     href="/contact"
