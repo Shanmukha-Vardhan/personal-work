@@ -11,7 +11,57 @@ const Header = ({ searchQuery, onSearch, onToggleSidebar }) => {
                     <span className="bar"></span>
                     <span className="bar"></span>
                 </button>
-                <Link to="/" className="header-logo">Shanmukha Vardhan</Link>
+                <Link to="/" className="header-logo" style={{
+                    textDecoration: 'none',
+                    fontSize: '24px', // Reduced from 32px for elegance
+                    display: 'flex',
+                    alignItems: 'center'
+                }}>
+                    <motion.div
+                        className="logo-container"
+                        whileHover="hover"
+                        initial="initial"
+                        style={{
+                            display: 'grid',
+                            gridTemplateColumns: '1fr',
+                            gridTemplateRows: '1fr',
+                            overflow: 'hidden',
+                            height: '1.2em'
+                        }}
+                    >
+                        <motion.span
+                            variants={{
+                                initial: { y: 0, opacity: 1 },
+                                hover: { y: -40, opacity: 0 }
+                            }}
+                            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                            style={{
+                                gridArea: '1 / 1 / 2 / 2',
+                                fontWeight: '500',
+                                letterSpacing: '0.02em',
+                                textTransform: 'none' // Keep Korean natural
+                            }}
+                        >
+                            샨무카 바르단
+                        </motion.span>
+                        <motion.span
+                            variants={{
+                                initial: { y: 40, opacity: 0 },
+                                hover: { y: 0, opacity: 1 }
+                            }}
+                            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                            style={{
+                                gridArea: '1 / 1 / 2 / 2',
+                                whiteSpace: 'nowrap',
+                                fontWeight: '500',
+                                letterSpacing: '0.05em',
+                                textTransform: 'uppercase'
+                            }}
+                        >
+                            Shanmukha Vardhan
+                        </motion.span>
+                    </motion.div>
+                </Link>
             </div>
 
             <div className="header-content">
