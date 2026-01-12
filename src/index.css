@@ -1237,96 +1237,92 @@ main {
     margin-left: auto;
     margin-right: auto;
   }
-}
 
-justify-content: space-between;
-/* Space between hamburger and search/nav */
-}
 
-.header-content {
-  flex-grow: 1;
-  display: flex;
-  justify-content: flex-end;
-}
+  .header-content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
 
-.header-content nav {
-  width: 100%;
-  justify-content: flex-end;
-}
+  .header-content nav {
+    width: 100%;
+    justify-content: flex-end;
+  }
 
-.search-container {
-  margin-right: 0;
-  flex-grow: 1;
-  max-width: 100%;
-}
+  .search-container {
+    margin-right: 0;
+    flex-grow: 1;
+    max-width: 100%;
+  }
 
-.search-input {
-  width: 100%;
-}
+  .search-input {
+    width: 100%;
+  }
 
-.search-input:focus {
-  width: 100%;
-}
+  .search-input:focus {
+    width: 100%;
+  }
 
-.hero-simple {
-  padding: 80px 0 40px;
-}
+  .hero-simple {
+    padding: 80px 0 40px;
+  }
 
-.hero-simple h1 {
-  font-size: 48px;
-  /* Smaller font for mobile */
-  word-wrap: break-word;
-  /* Prevent overflow */
-}
+  .hero-simple h1 {
+    font-size: 48px;
+    /* Smaller font for mobile */
+    word-wrap: break-word;
+    /* Prevent overflow */
+  }
 
-.subtitle {
-  font-size: 18px !important;
-}
+  .subtitle {
+    font-size: 18px !important;
+  }
 
-.all-projects {
-  padding: 0 0 60px;
-}
+  .all-projects {
+    padding: 0 0 60px;
+  }
 
-.project-grid {
-  grid-template-columns: 1fr;
-  /* Single column */
-  gap: 30px;
-}
+  .project-grid {
+    grid-template-columns: 1fr;
+    /* Single column */
+    gap: 30px;
+  }
 
-.tech-filter-container {
-  padding: 0;
-  margin-bottom: 30px;
-}
+  .tech-filter-container {
+    padding: 0;
+    margin-bottom: 30px;
+  }
 
-.scratchpad-container {
-  width: 100%;
-  height: 60%;
-  bottom: 0;
-  border-radius: 16px 16px 0 0;
-}
+  .scratchpad-container {
+    width: 100%;
+    height: 60%;
+    bottom: 0;
+    border-radius: 16px 16px 0 0;
+  }
 
-.scratchpad-overlay {
-  align-items: flex-end;
-  padding: 0;
-}
+  .scratchpad-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
 
-.taskboard-container {
-  width: 100%;
-  height: 100%;
-  border-radius: 0;
-  max-height: none;
-}
+  .taskboard-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    max-height: none;
+  }
 
-.cmd-modal {
-  width: 100%;
-  height: 100%;
-  border-radius: 0;
-  max-width: 100%;
-}
+  .cmd-modal {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    max-width: 100%;
+  }
 
-.cmd-overlay {
-  padding-top: 0;
-}
+  .cmd-overlay {
+    padding-top: 0;
+  }
 }
 
 /* Footer */
