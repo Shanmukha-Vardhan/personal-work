@@ -1,5 +1,49 @@
 export const projects = [
     {
+        id: 101,
+        slug: "avolve-app",
+        title: "Avolve",
+        description: "A mental health companion designed for growth, not dependency.",
+        longDescription: "Avolve is a mental health application focused on helping users reflect, build healthier habits, and navigate everyday emotional challenges in a supportive, non-intrusive way. The goal isn’t to replace therapy or offer diagnoses. It’s to provide a safe, accessible space for awareness, reflection, and personal growth.",
+        challenge: "Mental health apps often fall into one of two extremes: Overly clinical and intimidating, or overly gamified and shallow. Many tools focus on streaks, scores, or constant engagement, which can unintentionally create pressure instead of support.",
+        solution: "We wanted to build something different. Avolve is designed to feel calm, not overwhelming; supportive, not judgmental; and present, not addictive. The app encourages users to check in with themselves without feeling monitored or evaluated. Progress is personal. There are no comparisons.",
+        image: "/images/ProjectA.png",
+        link: "/avolve",
+        internalLink: null, // We want to show the case study first, which links to the live /avolve page
+        github: null,
+        category: "personal",
+        tags: ["React", "Mental Health", "Design"],
+        features: [
+            "Daily emotional check-ins",
+            "Guided reflections and prompts",
+            "Mood tracking without judgment",
+            "Insight summaries focused on patterns",
+            "Minimal, calming UI with intentional motion"
+        ],
+        techStack: ["Modern Frontend Stack", "API-driven architecture", "Scalable Foundation"]
+    },
+    {
+        id: 102,
+        slug: "left-unsaid",
+        title: "Left Unsaid",
+        description: "A space for things we never say out loud.",
+        longDescription: "Left Unsaid is a personal web project built around a simple idea: not everything needs an audience, a like button, or a reply. It’s a place to write thoughts, emotions, and moments that are usually left behind. No pressure to perform. No social validation. Just writing, and letting it exist.",
+        challenge: "Most platforms today are loud. They encourage instant reactions, constant sharing, and writing for engagement, not honesty. But some thoughts aren’t meant to be optimized or explained. They’re meant to be written and released. There wasn’t a space that felt quiet enough for that.",
+        solution: "Create a minimal, distraction-free website where users can write things they don’t want to publish publicly or even revisit often. No profiles. No feeds. No social pressure. Just a digital pause. The goal was to make the user feel like the site is listening, not responding.",
+        image: "/images/Leftunsaid.png",
+        link: null, // No live link provided, or maybe it's internal? Left as null for now.
+        github: null,
+        category: "personal",
+        tags: ["React", "Writing", "Minimalism"],
+        features: [
+            "Clean writing-focused layout",
+            "No visible metrics or engagement indicators",
+            "Simple flow from landing → writing → submission",
+            "Designed for emotional clarity, not productivity"
+        ],
+        techStack: ["Modern Web Technologies", "Component-driven structure"]
+    },
+    {
         id: 1,
         slug: "agency-os",
         title: "AgencyOS",

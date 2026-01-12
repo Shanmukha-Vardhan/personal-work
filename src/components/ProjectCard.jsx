@@ -39,7 +39,24 @@ const ProjectCard = ({ project }) => {
         hover: { y: -10, transition: { duration: 0.3, ease: "easeOut" } }
     };
 
-    // If slug exists, link to detail page.
+    // Priority: Internal Link (Custom Page) -> Slug (Detail Page) -> Link (External)
+    if (project.internalLink) {
+        return (
+            <Link to={project.internalLink} style={{ textDecoration: 'none', display: 'block' }}>
+                <motion.div
+                    className="project-card"
+                    variants={cardVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    whileHover="hover"
+                >
+                    {cardContent}
+                </motion.div>
+            </Link>
+        );
+    }
+
     if (project.slug) {
         return (
             <Link to={`/projects/${project.slug}`} style={{ textDecoration: 'none', display: 'block' }}>
