@@ -40,8 +40,8 @@ const Home = ({ category, searchQuery = '' }) => {
         );
     }
 
-    // Get top 3 featured projects (first 3 for now)
-    const featuredProjects = projects.slice(0, 3);
+    // Customize Featured Projects: Avolve (101), Left Unsaid (102), Gitam Attendance Calculator (11)
+    const featuredProjects = projects.filter(p => [101, 102, 11].includes(p.id));
 
     return (
         <main className="home-container">

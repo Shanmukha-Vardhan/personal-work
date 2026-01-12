@@ -182,7 +182,7 @@ const Hero = () => {
                         className="status-dot"
                         style={{ backgroundColor: activityStyle.dot }}
                     ></span>
-                    {loading ? 'Checking activity...' : data?.activity?.message || 'Available for new projects'}
+                    Handling 500+ active users.
                 </div>
             </div>
 

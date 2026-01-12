@@ -31,7 +31,7 @@ export const projects = [
         challenge: "Most platforms today are loud. They encourage instant reactions, constant sharing, and writing for engagement, not honesty. But some thoughts aren’t meant to be optimized or explained. They’re meant to be written and released. There wasn’t a space that felt quiet enough for that.",
         solution: "Create a minimal, distraction-free website where users can write things they don’t want to publish publicly or even revisit often. No profiles. No feeds. No social pressure. Just a digital pause. The goal was to make the user feel like the site is listening, not responding.",
         image: "/images/Leftunsaid.png",
-        link: null, // No live link provided, or maybe it's internal? Left as null for now.
+        link: "https://left-unsaid.vercel.app", // Updated live link
         github: null,
         category: "personal",
         tags: ["React", "Writing", "Minimalism"],
