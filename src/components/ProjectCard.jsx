@@ -1,125 +1,86 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const ProjectCard = ({ project }) => {
-    const cardRef = useRef(null);
-    const [rotateX, setRotateX] = useState(0);
-    const [rotateY, setRotateY] = useState(0);
-    const [glowX, setGlowX] = useState(50);
-    const [glowY, setGlowY] = useState(50);
-
-    const handleMouseMove = (e) => {
-        if (!cardRef.current) return;
-
-        const rect = cardRef.current.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        // Calculate rotation (subtle tilt)
-        const rotateXValue = ((y - centerY) / centerY) * -8;
-        const rotateYValue = ((x - centerX) / centerX) * 8;
-
-        setRotateX(rotateXValue);
-        setRotateY(rotateYValue);
-
-        // Glow position
-        setGlowX((x / rect.width) * 100);
-        setGlowY((y / rect.height) * 100);
-    };
-
-    const handleMouseLeave = () => {
-        setRotateX(0);
-        setRotateY(0);
-        setGlowX(50);
-        setGlowY(50);
-    };
+    const [isHovered, setIsHovered] = useState(false);
 
     const cardContent = (
-        <motion.div
-            ref={cardRef}
-            className="project-card-3d"
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            style={{
-                transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
-                transition: 'transform 0.1s ease-out',
-                position: 'relative',
-                borderRadius: '24px',
-                overflow: 'hidden',
-                background: '#fff',
-                boxShadow: '0 10px 40px rgba(0,0,0,0.08)',
-                cursor: 'pointer'
-            }}
-        >
-            {/* Spotlight Glow */}
-            <div
-                className="card-spotlight"
-                style={{
-                    position: 'absolute',
-                    inset: 0,
-                    background: `radial-gradient(circle at ${glowX}% ${glowY}%, rgba(39, 174, 96, 0.15) 0%, transparent 50%)`,
-                    pointerEvents: 'none',
-                    zIndex: 2,
-                    opacity: rotateX !== 0 || rotateY !== 0 ? 1 : 0,
-                    transition: 'opacity 0.3s ease'
-                }}
-            />
+        <>
+            <div className="project-image-wrapper" style={{ position: 'relative', overflow: 'hidden', borderRadius: '16px' }}>
+                <motion.div
+                    className="project-image"
+                    animate={{ scale: isHovered ? 1.05 : 1 }}
+                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                    style={{ aspectRatio: '4/3', width: '100%', background: '#f5f5f5' }}
+                >
+                    <img
+                        src={project.image}
+                        alt={project.title}
+                        loading="lazy"
+                        style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                    />
+                </motion.div>
 
-            {/* Shine Effect */}
-            <div
-                style={{
-                    position: 'absolute',
-                    inset: 0,
-                    background: `linear-gradient(${105 + rotateY * 2}deg, transparent 40%, rgba(255,255,255,0.5) 50%, transparent 60%)`,
-                    pointerEvents: 'none',
-                    zIndex: 3,
-                    opacity: rotateX !== 0 || rotateY !== 0 ? 0.6 : 0,
-                    transition: 'opacity 0.3s ease'
-                }}
-            />
-
-            {/* Image */}
-            <div className="project-image" style={{
-                aspectRatio: '4 / 3',
-                overflow: 'hidden',
-                background: '#f8f8f8'
-            }}>
-                <img
-                    src={project.image}
-                    alt={project.title}
-                    loading="lazy"
+                {/* Premium Dark Overlay - Reveals Data */}
+                <motion.div
+                    className="project-overlay"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: isHovered ? 1 : 0 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
                     style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'contain',
-                        transform: `scale(${1 + Math.abs(rotateX + rotateY) * 0.005})`,
-                        transition: 'transform 0.2s ease-out'
+                        position: 'absolute',
+                        inset: 0,
+                        background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 60%, transparent 100%)',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'flex-end',
+                        padding: '24px',
+                        pointerEvents: 'none' // Allows click through
                     }}
-                />
+                >
+                    <motion.div
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ y: isHovered ? 0 : 20, opacity: isHovered ? 1 : 0 }}
+                        transition={{ duration: 0.3, delay: 0.1 }}
+                    >
+                        <p style={{
+                            color: 'rgba(255, 255, 255, 0.95)',
+                            fontSize: '0.95rem',
+                            lineHeight: 1.5,
+                            marginBottom: '16px',
+                            fontWeight: 400,
+                            textShadow: '0 2px 4px rgba(0,0,0,0.1)'
+                        }}>
+                            {project.description}
+                        </p>
+
+                        <div style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '8px',
+                            color: '#4ade80', // Bright green for contrast on dark
+                            fontSize: '0.9rem',
+                            fontWeight: 600,
+                            letterSpacing: '0.02em'
+                        }}>
+                            View Case Study
+                            <motion.span
+                                animate={{ x: isHovered ? 4 : 0 }}
+                                transition={{ repeat: Infinity, duration: 1, repeatType: "reverse" }}
+                            >
+                                →
+                            </motion.span>
+                        </div>
+                    </motion.div>
+                </motion.div>
             </div>
 
-            {/* Info */}
-            <div style={{
-                padding: '24px',
-                textAlign: 'center',
-                position: 'relative',
-                zIndex: 4
-            }}>
-                <h3 style={{
-                    fontSize: '1.15rem',
-                    fontWeight: 600,
-                    marginBottom: '12px',
-                    color: 'var(--text-primary)'
-                }}>{project.title}</h3>
-
+            {/* Info Section - Always Visible */}
+            <div className="project-info" style={{ padding: '20px 0', textAlign: 'center', background: 'transparent' }}>
+                <h3 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '10px', color: 'var(--text-primary)' }}>
+                    {project.title}
+                </h3>
                 <div style={{
                     display: 'flex',
                     justifyContent: 'center',
@@ -128,28 +89,50 @@ const ProjectCard = ({ project }) => {
                 }}>
                     {project.tags && project.tags.slice(0, 2).map(tag => (
                         <span key={tag} style={{
-                            fontSize: '0.7rem',
+                            fontSize: '0.75rem',
                             textTransform: 'uppercase',
                             letterSpacing: '0.05em',
                             padding: '6px 14px',
                             borderRadius: '50px',
-                            background: 'linear-gradient(135deg, rgba(39, 174, 96, 0.1) 0%, rgba(39, 174, 96, 0.05) 100%)',
+                            background: 'rgba(39, 174, 96, 0.08)',
                             color: '#27ae60',
-                            fontWeight: 600,
-                            border: '1px solid rgba(39, 174, 96, 0.15)'
+                            fontWeight: 600
                         }}>
                             {tag}
                         </span>
                     ))}
                 </div>
             </div>
-        </motion.div>
+        </>
     );
+
+    const cardVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+    };
+
+    const cardProps = {
+        className: "project-card",
+        variants: cardVariants,
+        initial: "hidden",
+        whileInView: "visible",
+        viewport: { once: true },
+        whileHover: "hover",
+        onMouseEnter: () => setIsHovered(true),
+        onMouseLeave: () => setIsHovered(false),
+        style: {
+            cursor: 'pointer',
+            position: 'relative',
+            zIndex: 1
+        }
+    };
 
     if (project.internalLink) {
         return (
             <Link to={project.internalLink} style={{ textDecoration: 'none', display: 'block' }}>
-                {cardContent}
+                <motion.div {...cardProps}>
+                    {cardContent}
+                </motion.div>
             </Link>
         );
     }
@@ -157,12 +140,18 @@ const ProjectCard = ({ project }) => {
     if (project.slug) {
         return (
             <Link to={`/projects/${project.slug}`} style={{ textDecoration: 'none', display: 'block' }}>
-                {cardContent}
+                <motion.div {...cardProps}>
+                    {cardContent}
+                </motion.div>
             </Link>
         );
     }
 
-    return cardContent;
+    return (
+        <motion.div {...cardProps}>
+            {cardContent}
+        </motion.div>
+    );
 };
 
 export default ProjectCard;
