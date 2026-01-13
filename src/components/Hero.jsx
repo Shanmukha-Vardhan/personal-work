@@ -166,7 +166,11 @@ const Hero = () => {
                 </h1>
 
                 <p ref={subtitleRef} className="hero-subtitle">
-                    Shanmukha Vardhan — Creative Developer & Designer.
+                    <strong>Shanmukha Vardhan</strong> — Creative Developer & Designer.<br />
+                    <span style={{ opacity: 0.8, fontSize: '0.95em' }}>
+                        Building <a href="/avolve" style={{ color: '#27ae60', textDecoration: 'none', fontWeight: 500 }}>Avolve</a> — a mental health companion for 500+ users.<br />
+                        Computer Science & Business Systems student at GITAM.
+                    </span>
                 </p>
 
                 {/* Dynamic Activity Status */}
