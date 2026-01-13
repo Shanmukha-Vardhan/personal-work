@@ -1823,3 +1823,25 @@ button,
     font-size: 2.2rem; /* Even smaller for mobile to prevent overflow */
   }
 }
+
+/* Enhanced Project Card Styles */
+.project-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.project-card {
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--bg-color);
+  cursor: pointer;
+}
+
+.project-card:hover .project-image img {
+  filter: brightness(0.95);
+}
+
+.project-overlay {
+  pointer-events: none;
+}
