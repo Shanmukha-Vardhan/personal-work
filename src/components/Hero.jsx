@@ -165,28 +165,65 @@ const Hero = () => {
                     <span className="highlight">Unimagined.</span>
                 </h1>
 
-                <p ref={subtitleRef} className="hero-subtitle">
-                    <strong>Shanmukha Vardhan</strong> — Creative Developer & Designer.<br />
-                    <span style={{ opacity: 0.8, fontSize: '0.95em' }}>
-                        Building <a href="/avolve" style={{ color: '#27ae60', textDecoration: 'none', fontWeight: 500 }}>Avolve</a> — a mental health companion for 500+ users.<br />
-                        Computer Science & Business Systems student at GITAM.
-                    </span>
-                </p>
+                <div ref={subtitleRef} className="hero-intro" style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '16px',
+                    marginTop: '32px'
+                }}>
+                    <p style={{
+                        fontSize: '1.3rem',
+                        fontWeight: '400',
+                        color: 'var(--text-primary)',
+                        margin: 0,
+                        lineHeight: 1.5
+                    }}>
+                        <strong style={{ fontWeight: 600 }}>Shanmukha Vardhan</strong>
+                        <span style={{ color: 'var(--text-secondary)', marginLeft: '8px' }}>— Creative Developer & Designer</span>
+                    </p>
 
-                {/* Dynamic Activity Status */}
-                <div
-                    ref={statusRef}
-                    className="hero-status"
-                    style={{
-                        background: activityStyle.bg,
-                        border: `1px solid ${activityStyle.color}20`
-                    }}
-                >
-                    <span
-                        className="status-dot"
-                        style={{ backgroundColor: activityStyle.dot }}
-                    ></span>
-                    Handling 500+ active users.
+                    <div style={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        gap: '12px',
+                        marginTop: '8px'
+                    }}>
+                        {/* Avolve Pill */}
+                        <a href="/avolve" style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '8px',
+                            padding: '10px 18px',
+                            background: 'rgba(39, 174, 96, 0.08)',
+                            border: '1px solid rgba(39, 174, 96, 0.2)',
+                            borderRadius: '50px',
+                            color: '#27ae60',
+                            textDecoration: 'none',
+                            fontSize: '0.95rem',
+                            fontWeight: 500,
+                            transition: 'all 0.2s ease'
+                        }}>
+                            <span style={{ fontSize: '1.1em' }}>🌱</span>
+                            Building Avolve — 500+ users
+                        </a>
+
+                        {/* Education Pill */}
+                        <span style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '8px',
+                            padding: '10px 18px',
+                            background: 'rgba(0, 0, 0, 0.04)',
+                            border: '1px solid rgba(0, 0, 0, 0.08)',
+                            borderRadius: '50px',
+                            color: 'var(--text-secondary)',
+                            fontSize: '0.95rem',
+                            fontWeight: 500
+                        }}>
+                            <span style={{ fontSize: '1.1em' }}>🎓</span>
+                            CS & Business @ GITAM
+                        </span>
+                    </div>
                 </div>
             </div>
 
