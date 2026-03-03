@@ -32,50 +32,56 @@ export const initSmoothScroll = () => {
 };
 
 // Reveal elements on scroll - using CSS visibility initially
+// Keep track of the context for cleanup
+let revealContext;
+
+// Reveal elements on scroll - using CSS visibility initially
 export const initScrollReveal = () => {
-    // Clear any existing ScrollTriggers to prevent duplicates
-    ScrollTrigger.getAll().forEach(t => t.kill());
+    // Revert the previous context if it exists (cleans up animations and triggers created by this function)
+    if (revealContext) revealContext.revert();
 
-    // Fade up animation for general content
-    gsap.utils.toArray('.reveal-fade-up').forEach((el) => {
-        gsap.fromTo(el,
-            {
-                opacity: 0,
-                y: 50
-            },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 0.8,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: el,
-                    start: 'top 90%',
-                    toggleActions: 'play none none none' // Don't reverse - stay visible
+    revealContext = gsap.context(() => {
+        // Fade up animation for general content
+        gsap.utils.toArray('.reveal-fade-up').forEach((el) => {
+            gsap.fromTo(el,
+                {
+                    opacity: 0,
+                    y: 50
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: el,
+                        start: 'top 90%',
+                        toggleActions: 'play none none none' // Don't reverse - stay visible
+                    }
                 }
-            }
-        );
-    });
+            );
+        });
 
-    // Scale up animation
-    gsap.utils.toArray('.reveal-scale').forEach((el) => {
-        gsap.fromTo(el,
-            {
-                opacity: 0,
-                scale: 0.9
-            },
-            {
-                opacity: 1,
-                scale: 1,
-                duration: 0.8,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: el,
-                    start: 'top 90%',
-                    toggleActions: 'play none none none'
+        // Scale up animation
+        gsap.utils.toArray('.reveal-scale').forEach((el) => {
+            gsap.fromTo(el,
+                {
+                    opacity: 0,
+                    scale: 0.9
+                },
+                {
+                    opacity: 1,
+                    scale: 1,
+                    duration: 0.8,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: el,
+                        start: 'top 90%',
+                        toggleActions: 'play none none none'
+                    }
                 }
-            }
-        );
+            );
+        });
     });
 };
 

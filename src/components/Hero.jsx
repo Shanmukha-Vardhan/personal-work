@@ -5,37 +5,22 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
-    const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(true);
     const heroRef = useRef(null);
     const titleRef = useRef(null);
     const subtitleRef = useRef(null);
     const statusRef = useRef(null);
     const visualRef = useRef(null);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch('/api/github');
-                if (!response.ok) throw new Error('Failed to fetch');
-                const result = await response.json();
-                setData(result);
-            } catch (err) {
-                console.error('Failed to fetch GitHub data:', err);
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetchData();
-    }, []);
-
+    // GSAP Animations - use useLayoutEffect to ensure DOM is ready
     // GSAP Animations - use useLayoutEffect to ensure DOM is ready
     useLayoutEffect(() => {
+        let ctx;
+
         // Small delay to ensure React has rendered
         const timer = setTimeout(() => {
             if (!heroRef.current) return;
 
-            const ctx = gsap.context(() => {
+            ctx = gsap.context(() => {
                 // Entrance timeline
                 const tl = gsap.timeline();
 
@@ -95,101 +80,61 @@ const Hero = () => {
                 });
 
             }, heroRef);
-
-            return () => ctx.revert();
         }, 100);
 
-        return () => clearTimeout(timer);
+        return () => {
+            clearTimeout(timer);
+            if (ctx) ctx.revert();
+        };
     }, []);
-
-    // Get last 13 weeks (3 months) of data
-    const getRecentWeeks = () => {
-        if (!data?.calendar) return [];
-        return data.calendar.slice(-13);
-    };
-
-    const recentWeeks = getRecentWeeks();
-
-    // Calculate stats for last 3 months
-    const getRecentStats = () => {
-        if (!recentWeeks.length) return { total: 0, streak: 0 };
-
-        let total = 0;
-        let currentStreak = 0;
-
-        const allDays = recentWeeks.flatMap(week => week.days);
-        allDays.forEach(day => {
-            total += day.count;
-        });
-
-        const reversed = [...allDays].reverse();
-        const today = new Date().toISOString().split('T')[0];
-        for (const day of reversed) {
-            if (day.date > today) continue;
-            if (day.count > 0) {
-                currentStreak++;
-            } else {
-                if (day.date === today) continue;
-                break;
-            }
-        }
-
-        return { total, streak: currentStreak };
-    };
-
-    const stats = getRecentStats();
-
-    // Activity status styling
-    const getActivityStyle = () => {
-        if (!data?.activity) return { color: '#2ecc71', bg: 'rgba(46, 204, 113, 0.1)', dot: '#2ecc71' };
-
-        switch (data.activity.status) {
-            case 'active':
-                return { color: '#2ecc71', bg: 'rgba(46, 204, 113, 0.1)', dot: '#2ecc71' };
-            case 'moderate':
-                return { color: '#f39c12', bg: 'rgba(243, 156, 18, 0.1)', dot: '#f39c12' };
-            case 'inactive':
-                return { color: '#e74c3c', bg: 'rgba(231, 76, 60, 0.1)', dot: '#e74c3c' };
-            default:
-                return { color: '#2ecc71', bg: 'rgba(46, 204, 113, 0.1)', dot: '#2ecc71' };
-        }
-    };
-
-    const activityStyle = getActivityStyle();
 
     return (
         <section className="hero-section" ref={heroRef}>
             <div className="hero-content">
-                <h1 ref={titleRef} className="hero-title">
-                    Designing the <br />
-                    <span className="highlight">Unimagined.</span>
+                <h1 ref={titleRef} className="hero-title" style={{
+                    marginBottom: '24px',
+                    lineHeight: 1.05
+                }}>
+                    Designing Products That <br />
+                    <span className="highlight">Actually Ship.</span>
                 </h1>
 
                 <div ref={subtitleRef} className="hero-intro" style={{
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: '16px',
-                    marginTop: '32px'
+                    maxWidth: '520px'
                 }}>
                     <p style={{
                         fontSize: '1.3rem',
-                        fontWeight: '400',
+                        fontWeight: '600',
                         color: 'var(--text-primary)',
                         margin: 0,
-                        lineHeight: 1.5
+                        marginBottom: '16px',
+                        lineHeight: 1.6
                     }}>
-                        <strong style={{ fontWeight: 600 }}>Shanmukha Vardhan</strong>
-                        <span style={{ color: 'var(--text-secondary)', marginLeft: '8px' }}>— Creative Developer & Designer</span>
+                        Shanmukha Vardhan <span style={{ color: 'var(--text-secondary)', fontWeight: '400' }}>— Creative Developer & Freelancer</span>
+                    </p>
+
+                    <p style={{
+                        fontSize: '1.15rem',
+                        fontWeight: '400',
+                        color: 'var(--text-secondary)',
+                        margin: 0,
+                        marginBottom: '28px',
+                        lineHeight: 1.6
+                    }}>
+                        I design and build fast, conversion-focused digital products for startups.<br />
+                        From idea to shipped product, I focus on clarity, speed, and real user impact.
                     </p>
 
                     <div style={{
                         display: 'flex',
                         flexWrap: 'wrap',
                         gap: '12px',
-                        marginTop: '8px'
+                        marginBottom: '32px'
                     }}>
-                        {/* Avolve Pill */}
-                        <a href="/avolve" style={{
+                        {/* Status Badge */}
+                        <a href="#contact" style={{
                             display: 'inline-flex',
                             alignItems: 'center',
                             gap: '8px',
@@ -203,127 +148,55 @@ const Hero = () => {
                             fontWeight: 500,
                             transition: 'all 0.2s ease'
                         }}>
-                            <span style={{ fontSize: '1.1em' }}>🌱</span>
-                            Building Avolve — 500+ users
+                            <span style={{ fontSize: '1.1em' }}>🟢</span>
+                            Available for freelance & early-stage startups
                         </a>
 
-                        {/* Education Pill */}
-                        <span style={{
+                        {/* Secondary Badge */}
+                        <a href="/avolve" style={{
                             display: 'inline-flex',
                             alignItems: 'center',
                             gap: '8px',
                             padding: '10px 18px',
-                            background: 'rgba(0, 0, 0, 0.04)',
-                            border: '1px solid rgba(0, 0, 0, 0.08)',
+                            background: 'rgba(100, 100, 100, 0.08)',
+                            border: '1px solid rgba(100, 100, 100, 0.2)',
                             borderRadius: '50px',
                             color: 'var(--text-secondary)',
+                            textDecoration: 'none',
                             fontSize: '0.95rem',
-                            fontWeight: 500
+                            fontWeight: 500,
+                            transition: 'all 0.2s ease'
                         }}>
-                            <span style={{ fontSize: '1.1em' }}>🎓</span>
-                            CS & Business @ GITAM
-                        </span>
+                            <span style={{ fontSize: '1.1em' }}>🚀</span>
+                            Building AVOLVE
+                        </a>
+                    </div>
+
+                    {/* Primary CTA */}
+                    <div style={{ marginTop: '16px' }}>
+                        <a href="#work" className="primary-cta" style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '8px',
+                            padding: '14px 28px',
+                            background: 'var(--text-primary)',
+                            color: 'var(--bg-primary)',
+                            borderRadius: '50px',
+                            textDecoration: 'none',
+                            fontWeight: 600,
+                            fontSize: '1.05rem',
+                            transition: 'transform 0.2s ease, opacity 0.2s ease'
+                        }}>
+                            View My Work →
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <div className="hero-visual" ref={visualRef}>
-                {/* Contribution Graph - Last 3 Months */}
-                <div className="contribution-widget">
-                    {/* Stats Row with Tooltips */}
-                    <div className="contribution-stats">
-                        <Tooltip
-                            content={`${data?.contributions?.commits || 0} commits, ${data?.contributions?.pullRequests || 0} PRs & ${data?.contributions?.issues || 0} issues in last 90 days`}
-                        >
-                            <div className="stat-item">
-                                <span className="stat-value">
-                                    {loading ? '...' : stats.total}
-                                </span>
-                                <span className="stat-label">contributions</span>
-                            </div>
-                        </Tooltip>
-
-                        <Tooltip
-                            content={`Longest streak: ${data?.contributions?.longestStreak || 0} days`}
-                        >
-                            <div className="stat-item">
-                                <span className="stat-value">
-                                    {loading ? '...' : `${stats.streak}d`}
-                                </span>
-                                <span className="stat-label">streak</span>
-                            </div>
-                        </Tooltip>
-
-                        <Tooltip
-                            content={`${data?.repos?.active || 0} active, ${data?.repos?.archived || 0} archived`}
-                        >
-                            <div className="stat-item">
-                                <span className="stat-value">
-                                    {loading ? '...' : data?.repos?.total || 0}
-                                </span>
-                                <span className="stat-label">repos</span>
-                            </div>
-                        </Tooltip>
-                    </div>
-
-                    {/* Compact Heatmap Grid */}
-                    <div className="contribution-grid">
-                        {loading ? (
-                            Array.from({ length: 91 }).map((_, i) => (
-                                <div key={i} className="contribution-cell skeleton" />
-                            ))
-                        ) : (
-                            recentWeeks.flatMap((week, weekIndex) =>
-                                week.days.map((day, dayIndex) => (
-                                    <div
-                                        key={`${weekIndex}-${dayIndex}`}
-                                        className="contribution-cell"
-                                        style={{
-                                            background: day.color || '#161b22',
-                                            animationDelay: `${weekIndex * 0.03 + dayIndex * 0.01}s`
-                                        }}
-                                        title={`${day.count} contributions on ${day.date}`}
-                                    />
-                                ))
-                            )
-                        )}
-                    </div>
-
-                    {/* GitHub Link */}
-                    <a
-                        href="https://github.com/Shanmukha-Vardhan"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="github-link"
-                    >
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-                        </svg>
-                        @Shanmukha-Vardhan
-                    </a>
-                </div>
+            <div className="hero-visual" ref={visualRef} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                {/* Reserved for something exciting */}
             </div>
         </section>
-    );
-};
-
-// Tooltip Component
-const Tooltip = ({ content, children }) => {
-    const [isVisible, setIsVisible] = useState(false);
-
-    return (
-        <div
-            className="tooltip-wrapper"
-            onMouseEnter={() => setIsVisible(true)}
-            onMouseLeave={() => setIsVisible(false)}
-        >
-            {children}
-            {isVisible && (
-                <div className="tooltip">
-                    {content}
-                </div>
-            )}
-        </div>
     );
 };
 
