@@ -182,8 +182,68 @@ const Hero = () => {
                 </div>
             </div>
 
-            <div className="hero-visual" ref={visualRef} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                {/* Reserved for something exciting */}
+            <div className="hero-visual" ref={visualRef} style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', width: '100%' }}>
+                <div style={{
+                    width: '100%',
+                    maxWidth: '420px',
+                    padding: '32px',
+                    borderRadius: '18px',
+                    background: '#f6f6f6',
+                    boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+                    color: '#111',
+                    display: 'flex',
+                    flexDirection: 'column'
+                }}>
+                    <div style={{ fontSize: '0.8rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#666', marginBottom: '16px' }}>
+                        Featured Project (Best)
+                    </div>
+
+                    <img src="/images/ProjectA.png" alt="AVOLVE App UI Preview" style={{
+                        width: '100%',
+                        height: 'auto',
+                        objectFit: 'cover',
+                        borderRadius: '12px',
+                        marginBottom: '24px',
+                        boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
+                        border: '1px solid rgba(0,0,0,0.05)'
+                    }} />
+
+                    <h3 style={{ fontSize: '1.5rem', fontWeight: '700', margin: '0 0 12px 0', color: '#111' }}>
+                        AVOLVE
+                    </h3>
+
+                    <p style={{ fontSize: '0.95rem', color: '#444', lineHeight: 1.6, margin: '0 0 24px 0' }}>
+                        Mental health platform focused on helping people manage loneliness, emotional stress, and self-reflection.
+                    </p>
+
+                    <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '32px' }}>
+                        {['Next.js', 'Supabase', 'Product Design'].map(tag => (
+                            <span key={tag} style={{
+                                padding: '6px 12px',
+                                background: 'rgba(0,0,0,0.05)',
+                                borderRadius: '50px',
+                                fontSize: '0.8rem',
+                                fontWeight: '600',
+                                color: '#333'
+                            }}>
+                                {tag}
+                            </span>
+                        ))}
+                    </div>
+
+                    <a href="/avolve" style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        fontWeight: '600',
+                        color: '#111',
+                        textDecoration: 'none',
+                        fontSize: '0.95rem',
+                        transition: 'opacity 0.2s ease'
+                    }}>
+                        View Project →
+                    </a>
+                </div>
             </div>
         </section>
     );
