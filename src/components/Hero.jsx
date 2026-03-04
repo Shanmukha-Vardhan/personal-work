@@ -89,30 +89,44 @@ const Hero = () => {
     }, []);
 
     return (
-        <section className="hero-section" ref={heroRef}>
+        <section className="hero-section" ref={heroRef} style={{
+            paddingTop: '120px',
+            paddingBottom: '100px',
+            maxWidth: '1200px',
+            margin: '0 auto',
+            paddingLeft: '24px',
+            paddingRight: '24px',
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: '80px',
+            alignItems: 'center'
+        }}>
             <div className="hero-content">
                 <h1 ref={titleRef} className="hero-title" style={{
+                    fontSize: '64px',
+                    lineHeight: 1.05,
+                    maxWidth: '520px',
                     marginBottom: '24px',
-                    lineHeight: 1.05
+                    fontWeight: '700',
+                    color: 'var(--text-primary)'
                 }}>
-                    Designing Products That <br />
-                    <span className="highlight">Actually Ship.</span>
+                    Turning Ideas Into Real Products.
                 </h1>
 
                 <div ref={subtitleRef} className="hero-intro" style={{
                     display: 'flex',
-                    flexDirection: 'column',
-                    maxWidth: '520px'
+                    flexDirection: 'column'
                 }}>
                     <p style={{
-                        fontSize: '1.3rem',
+                        fontSize: '20px',
                         fontWeight: '600',
                         color: 'var(--text-primary)',
                         margin: 0,
                         marginBottom: '16px',
-                        lineHeight: 1.6
+                        lineHeight: 1.5
                     }}>
-                        Shanmukha Vardhan <span style={{ color: 'var(--text-secondary)', fontWeight: '400' }}>— Creative Developer & Freelancer</span>
+                        Shanmukha Vardhan — Freelance Developer <br />
+                        <span style={{ color: 'var(--text-secondary)', fontWeight: '400' }}>Founder of AVOLVE Studio</span>
                     </p>
 
                     <p style={{
@@ -120,74 +134,48 @@ const Hero = () => {
                         fontWeight: '400',
                         color: 'var(--text-secondary)',
                         margin: 0,
-                        marginBottom: '28px',
-                        lineHeight: 1.6
+                        marginBottom: '32px',
+                        lineHeight: 1.6,
+                        maxWidth: '480px'
                     }}>
-                        I design and build fast, conversion-focused digital products for startups.<br />
-                        From idea to shipped product, I focus on clarity, speed, and real user impact.
+                        I help early-stage startups build MVPs and help local businesses create modern websites that bring them online.
                     </p>
 
-                    <div style={{
-                        display: 'flex',
-                        flexWrap: 'wrap',
-                        gap: '12px',
-                        marginBottom: '32px'
-                    }}>
-                        {/* Status Badge */}
-                        <a href="#contact" style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '8px',
-                            padding: '10px 18px',
-                            background: 'rgba(39, 174, 96, 0.08)',
-                            border: '1px solid rgba(39, 174, 96, 0.2)',
-                            borderRadius: '50px',
-                            color: '#27ae60',
-                            textDecoration: 'none',
-                            fontSize: '0.95rem',
-                            fontWeight: 500,
-                            transition: 'all 0.2s ease'
-                        }}>
-                            <span style={{ fontSize: '1.1em' }}>🟢</span>
-                            Available for freelance & early-stage startups
-                        </a>
-
-                        {/* Secondary Badge */}
-                        <a href="/avolve" style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '8px',
-                            padding: '10px 18px',
-                            background: 'rgba(100, 100, 100, 0.08)',
-                            border: '1px solid rgba(100, 100, 100, 0.2)',
-                            borderRadius: '50px',
-                            color: 'var(--text-secondary)',
-                            textDecoration: 'none',
-                            fontSize: '0.95rem',
-                            fontWeight: 500,
-                            transition: 'all 0.2s ease'
-                        }}>
-                            <span style={{ fontSize: '1.1em' }}>🚀</span>
-                            Building AVOLVE
-                        </a>
-                    </div>
-
-                    {/* Primary CTA */}
-                    <div style={{ marginTop: '16px' }}>
+                    {/* Buttons */}
+                    <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
                         <a href="#work" className="primary-cta" style={{
                             display: 'inline-flex',
                             alignItems: 'center',
+                            justifyContent: 'center',
                             gap: '8px',
-                            padding: '14px 28px',
+                            padding: '16px 32px',
                             background: 'var(--text-primary)',
                             color: 'var(--bg-primary)',
                             borderRadius: '50px',
                             textDecoration: 'none',
                             fontWeight: 600,
-                            fontSize: '1.05rem',
+                            fontSize: '1rem',
                             transition: 'transform 0.2s ease, opacity 0.2s ease'
                         }}>
-                            View My Work →
+                            View Work
+                        </a>
+
+                        <a href="/contact" className="secondary-cta" style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            gap: '8px',
+                            padding: '16px 32px',
+                            background: 'transparent',
+                            color: 'var(--text-primary)',
+                            border: '1px solid var(--border-color, rgba(255, 255, 255, 0.1))',
+                            borderRadius: '50px',
+                            textDecoration: 'none',
+                            fontWeight: 600,
+                            fontSize: '1rem',
+                            transition: 'all 0.2s ease'
+                        }}>
+                            Start a Project
                         </a>
                     </div>
                 </div>

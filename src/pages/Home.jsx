@@ -54,64 +54,76 @@ const Home = ({ category, searchQuery = '' }) => {
             {/* Show Hero only when no search query is present */}
             {!searchQuery && <Hero />}
 
-            {/* Avolve CTA - Dynamic & Prominent */}
+            {/* Trust Strip */}
             {!searchQuery && (
-                <div style={{ textAlign: 'center', marginBottom: '80px', marginTop: '-40px', position: 'relative', zIndex: 10 }}>
-                    <a href="/avolve" style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '10px',
-                        padding: '12px 30px',
-                        background: 'var(--text-primary)',
-                        color: 'var(--bg-color)',
-                        borderRadius: '50px',
-                        textDecoration: 'none',
-                        fontFamily: 'var(--font-display)',
-                        fontWeight: '600',
-                        fontSize: '0.9rem',
-                        letterSpacing: '0.05em',
-                        boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
-                        transition: 'transform 0.2s ease'
+                <section style={{ padding: '60px 0', borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                    <div style={{
+                        maxWidth: '1200px',
+                        margin: '0 auto',
+                        padding: '0 24px',
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+                        gap: '40px',
+                        textAlign: 'center'
                     }}>
-                        <span>✨ Introducing Avolve</span>
-                        <span style={{ opacity: 0.7 }}>→</span>
-                    </a>
-                </div>
+                        <div style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', fontWeight: '500' }}>Worked with early-stage founders</div>
+                        <div style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', fontWeight: '500' }}>Helping local businesses go online</div>
+                        <div style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', fontWeight: '500' }}>Founder of AVOLVE Studio</div>
+                    </div>
+                </section>
             )}
 
-            {/* Featured Work Section - reveal on scroll */}
-            <section
-                className="featured-projects reveal-fade-up"
-                style={{ padding: '0 60px 100px', maxWidth: '1600px', margin: '0 auto' }}
-            >
+            {/* Services Section */}
+            {!searchQuery && (
+                <section id="services" style={{ padding: '120px 0', maxWidth: '1200px', margin: '0 auto', paddingLeft: '24px', paddingRight: '24px' }}>
+                    <h2 style={{
+                        fontSize: '2.5rem',
+                        fontWeight: '700',
+                        marginBottom: '60px',
+                        color: 'var(--text-primary)'
+                    }}>What I Build</h2>
+
+                    <div style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                        gap: '40px'
+                    }}>
+                        <div style={{ padding: '36px', borderRadius: '16px', background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
+                            <h3 style={{ fontSize: '1.25rem', marginBottom: '16px', color: 'var(--text-primary)', fontWeight: '600' }}>MVP Development</h3>
+                            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>Build your startup idea into a working product.</p>
+                        </div>
+                        <div style={{ padding: '36px', borderRadius: '16px', background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
+                            <h3 style={{ fontSize: '1.25rem', marginBottom: '16px', color: 'var(--text-primary)', fontWeight: '600' }}>Business Websites</h3>
+                            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>Modern websites for stores and local businesses.</p>
+                        </div>
+                        <div style={{ padding: '36px', borderRadius: '16px', background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
+                            <h3 style={{ fontSize: '1.25rem', marginBottom: '16px', color: 'var(--text-primary)', fontWeight: '600' }}>Landing Pages</h3>
+                            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>Fast pages designed to convert visitors into customers.</p>
+                        </div>
+                    </div>
+                </section>
+            )}
+
+            {/* Featured Work Section */}
+            <section id="work" className="featured-projects reveal-fade-up" style={{ padding: '120px 0', maxWidth: '1200px', margin: '0 auto', paddingLeft: '24px', paddingRight: '24px' }}>
                 <div style={{
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'baseline',
-                    marginBottom: '40px'
+                    marginBottom: '60px'
                 }}>
-                    <h2 className="section-title" style={{
+                    <h2 style={{
                         fontSize: '2.5rem',
-                        fontWeight: '400',
-                        fontFamily: 'var(--font-display)',
+                        fontWeight: '700',
                         color: 'var(--text-primary)'
-                    }}>Featured Work</h2>
-
-                    <a href="/projects" className="view-all-link" style={{
-                        color: 'var(--text-primary)',
-                        textDecoration: 'none',
-                        borderBottom: '1px solid var(--text-secondary)',
-                        paddingBottom: '2px',
-                        fontSize: '0.9rem',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.05em',
-                        transition: 'all 0.3s ease'
-                    }}>
-                        View All Projects
-                    </a>
+                    }}>Selected Work</h2>
                 </div>
 
-                <div className="project-grid">
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+                    gap: '60px'
+                }}>
                     {featuredProjects.map(project => (
                         <ProjectCard
                             key={project.id}
@@ -121,79 +133,91 @@ const Home = ({ category, searchQuery = '' }) => {
                 </div>
             </section>
 
-            {/* Technologies Section - reveal on scroll */}
-            <section
-                className="trusted-by reveal-fade-up"
-                style={{ padding: '0 60px 100px', maxWidth: '1600px', margin: '0 auto', textAlign: 'center' }}
-            >
-                <p style={{
-                    color: 'var(--text-secondary)',
-                    textTransform: 'uppercase',
-                    fontSize: '0.8rem',
-                    letterSpacing: '0.15em',
-                    marginBottom: '50px'
-                }}>Technologies & Tools I Use</p>
-                <div className="tech-logos" style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    gap: '80px',
-                    opacity: 0.6,
-                    filter: 'grayscale(100%)',
-                    flexWrap: 'wrap',
-                    transition: 'all 0.5s ease'
-                }}>
-                    {['REACT', 'NODE.JS', 'FIGMA', 'NEXT.JS', 'TYPESCRIPT'].map((tech, index) => (
-                        <span
-                            key={tech}
-                            className="tech-item"
-                            style={{
-                                fontSize: '1.6rem',
-                                fontWeight: '700',
-                                fontFamily: 'var(--font-display)',
-                                color: 'var(--text-primary)',
-                                transition: 'all 0.3s ease',
-                                transitionDelay: `${index * 0.05}s`
-                            }}
-                        >{tech}</span>
-                    ))}
-                </div>
-            </section>
+            {/* AVOLVE Studio Section */}
+            {!searchQuery && (
+                <section style={{ padding: '120px 0', background: 'rgba(255, 255, 255, 0.02)' }}>
+                    <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                        <h2 style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '24px', color: 'var(--text-primary)' }}>AVOLVE Studio</h2>
+                        <p style={{ fontSize: '1.15rem', color: 'var(--text-secondary)', maxWidth: '600px', lineHeight: 1.6, marginBottom: '32px' }}>
+                            AVOLVE Studio is where I build and experiment with digital products.<br />
+                            It focuses on helping founders turn ideas into real tools and platforms.
+                        </p>
+                        <a href="/avolve" style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '8px',
+                            padding: '16px 32px',
+                            background: 'var(--text-primary)',
+                            color: 'var(--bg-primary)',
+                            borderRadius: '50px',
+                            textDecoration: 'none',
+                            fontWeight: 600,
+                            fontSize: '1rem',
+                            transition: 'transform 0.2s ease, opacity 0.2s ease'
+                        }}>
+                            Explore AVOLVE →
+                        </a>
+                    </div>
+                </section>
+            )}
+
+            {/* Process Section */}
+            {!searchQuery && (
+                <section style={{ padding: '120px 0', maxWidth: '1200px', margin: '0 auto', paddingLeft: '24px', paddingRight: '24px' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '32px' }}>
+                        <div>
+                            <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '16px', fontWeight: '600' }}>01</div>
+                            <h3 style={{ fontSize: '1.25rem', marginBottom: '16px', color: 'var(--text-primary)', fontWeight: '600' }}>Idea</h3>
+                            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0, fontSize: '0.95rem' }}>Understanding your idea and defining the product.</p>
+                        </div>
+                        <div>
+                            <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '16px', fontWeight: '600' }}>02</div>
+                            <h3 style={{ fontSize: '1.25rem', marginBottom: '16px', color: 'var(--text-primary)', fontWeight: '600' }}>Design</h3>
+                            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0, fontSize: '0.95rem' }}>Structuring the user experience and interface.</p>
+                        </div>
+                        <div>
+                            <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '16px', fontWeight: '600' }}>03</div>
+                            <h3 style={{ fontSize: '1.25rem', marginBottom: '16px', color: 'var(--text-primary)', fontWeight: '600' }}>Build</h3>
+                            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0, fontSize: '0.95rem' }}>Developing the product or website.</p>
+                        </div>
+                        <div>
+                            <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '16px', fontWeight: '600' }}>04</div>
+                            <h3 style={{ fontSize: '1.25rem', marginBottom: '16px', color: 'var(--text-primary)', fontWeight: '600' }}>Launch</h3>
+                            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0, fontSize: '0.95rem' }}>Deploying and making it live.</p>
+                        </div>
+                    </div>
+                </section>
+            )}
 
             {/* Call to Action Section */}
-            <section
-                className="cta-section reveal-scale"
-                style={{
-                    padding: '120px 60px',
-                    maxWidth: '1200px',
-                    margin: '0 auto 100px',
-                    textAlign: 'center'
-                }}
-            >
-                <h2 className="cta-title">
-                    Let’s build something<br />
-                    <span className="cta-highlight">extraordinary</span> together.
+            <section className="cta-section reveal-scale" style={{
+                padding: '140px 0',
+                maxWidth: '1200px',
+                margin: '0 auto',
+                paddingLeft: '24px',
+                paddingRight: '24px',
+                textAlign: 'center'
+            }}>
+                <h2 style={{ fontSize: '3rem', fontWeight: '700', marginBottom: '16px', color: 'var(--text-primary)', lineHeight: 1.1 }}>
+                    Have an idea? Let’s build it.
                 </h2>
-                <p className="cta-text">
-                    Have an exciting project in mind? I’d love to hear about it.
+                <p style={{ color: 'var(--text-secondary)', fontSize: '1.15rem', marginBottom: '40px', lineHeight: 1.6, maxWidth: '600px', margin: '0 auto 40px auto' }}>
+                    I work with startups and businesses looking to launch fast.
                 </p>
-                <a
-                    href="/contact"
-                    className="cta-button"
-                    style={{
-                        display: 'inline-block',
-                        padding: '18px 48px',
-                        background: 'var(--text-primary)',
-                        color: '#ffffff',
-                        textDecoration: 'none',
-                        fontSize: '0.95rem',
-                        fontWeight: '500',
-                        letterSpacing: '0.05em',
-                        textTransform: 'uppercase',
-                        borderRadius: '50px',
-                        transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
-                    }}
-                >
-                    Get in Touch
+                <a href="/contact" style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '16px 40px',
+                    background: 'var(--text-primary)',
+                    color: 'var(--bg-primary)',
+                    borderRadius: '50px',
+                    textDecoration: 'none',
+                    fontWeight: 600,
+                    fontSize: '1rem',
+                    transition: 'transform 0.2s ease, opacity 0.2s ease'
+                }}>
+                    Start a Project
                 </a>
             </section>
         </main>
