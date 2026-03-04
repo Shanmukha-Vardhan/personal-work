@@ -1,86 +1,115 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import GlassSurface from './GlassSurface';
+import { useLocation } from 'react-router-dom';
 
 const Header = ({ searchQuery, onSearch, onToggleSidebar }) => {
     const { pathname } = useLocation();
-    const isHome = pathname === '/';
+
+    const scrollTo = (id) => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
+    const navLinkStyle = {
+        color: '#222',
+        textDecoration: 'none',
+        fontSize: '0.95rem',
+        fontWeight: '400',
+        letterSpacing: '0.01em',
+        transition: 'opacity 0.2s ease',
+        cursor: 'pointer'
+    };
 
     return (
         <header style={{
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center',
-            paddingTop: '20px',
-            paddingBottom: '20px',
+            justifyContent: 'space-between',
+            padding: '28px 48px',
             position: 'sticky',
             top: 0,
             zIndex: 1000,
             width: '100%',
-            background: 'transparent'
+            background: '#ffffff',
+            borderBottom: 'none'
         }}>
-            <GlassSurface
-                width="100%"
-                height={70}
-                borderRadius={35}
-                opacity={0.8}
-                blur={20}
-                style={{
-                    maxWidth: '1200px',
-                    margin: '0 24px'
-                }}
-            >
-                <div style={{
-                    width: '100%',
-                    padding: '0 32px',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    height: '100%'
-                }}>
-                    <div className="header-left" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                        <button className="mobile-menu-btn" onClick={onToggleSidebar}>
-                            <span className="bar"></span>
-                            <span className="bar"></span>
-                            <span className="bar"></span>
-                        </button>
-                        <Link to="/" className="header-logo" style={{
-                            textDecoration: 'none',
-                            fontSize: '20px',
-                            fontWeight: '700',
-                            color: 'var(--text-primary)',
-                            letterSpacing: '-0.02em',
-                            margin: 0
-                        }}>
-                            Shanmukha Vardhan
-                        </Link>
-                    </div>
+            {/* Mobile menu button */}
+            <button className="mobile-menu-btn" onClick={onToggleSidebar}>
+                <span className="bar"></span>
+                <span className="bar"></span>
+                <span className="bar"></span>
+            </button>
 
-                    <nav style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '32px',
-                        margin: 0
-                    }}>
-                        {isHome ? (
-                            <>
-                                <a href="#about" className="nav-link desktop-only" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.95rem' }}>about.</a>
-                                <a href="#work" className="nav-link desktop-only" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.95rem' }}>projects.</a>
-                                <Link to="/avolve" className="nav-link desktop-only" style={{ color: 'var(--text-primary)', fontWeight: '600', textDecoration: 'none', fontSize: '0.95rem' }}>avolve.</Link>
-                                <Link to="/contact" className="nav-link desktop-only" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.95rem' }}>contact.</Link>
-                            </>
-                        ) : (
-                            <>
-                                <Link to="/" className="nav-link desktop-only" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.95rem' }}>home.</Link>
-                                <Link to="/projects" className="nav-link desktop-only" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.95rem' }}>projects.</Link>
-                                <Link to="/avolve" className="nav-link desktop-only" style={{ color: 'var(--text-primary)', fontWeight: '600', textDecoration: 'none', fontSize: '0.95rem' }}>avolve.</Link>
-                                <Link to="/about" className="nav-link desktop-only" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.95rem' }}>about.</Link>
-                                <Link to="/contact" className="nav-link desktop-only" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.95rem' }}>contact.</Link>
-                            </>
-                        )}
-                    </nav>
-                </div>
-            </GlassSurface>
+            {/* Left nav */}
+            <nav className="desktop-only" style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '40px'
+            }}>
+                <a
+                    href={pathname === '/' ? '#n-about' : '/'}
+                    onClick={(e) => {
+                        if (pathname === '/') {
+                            e.preventDefault();
+                            scrollTo('n-about');
+                        }
+                    }}
+                    style={navLinkStyle}
+                    onMouseEnter={(e) => e.target.style.opacity = '0.5'}
+                    onMouseLeave={(e) => e.target.style.opacity = '1'}
+                >about.</a>
+                <a
+                    href={pathname === '/' ? '#n-project' : '/projects'}
+                    onClick={(e) => {
+                        if (pathname === '/') {
+                            e.preventDefault();
+                            scrollTo('n-project');
+                        }
+                    }}
+                    style={navLinkStyle}
+                    onMouseEnter={(e) => e.target.style.opacity = '0.5'}
+                    onMouseLeave={(e) => e.target.style.opacity = '1'}
+                >projects.</a>
+                <a
+                    href={pathname === '/' ? '#n-life' : '/'}
+                    onClick={(e) => {
+                        if (pathname === '/') {
+                            e.preventDefault();
+                            scrollTo('n-life');
+                        }
+                    }}
+                    style={navLinkStyle}
+                    onMouseEnter={(e) => e.target.style.opacity = '0.5'}
+                    onMouseLeave={(e) => e.target.style.opacity = '1'}
+                >life.</a>
+            </nav>
+
+            {/* Right nav */}
+            <nav className="desktop-only" style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '40px'
+            }}>
+                <a
+                    href={pathname === '/' ? '#n-contact' : '/contact'}
+                    onClick={(e) => {
+                        if (pathname === '/') {
+                            e.preventDefault();
+                            scrollTo('n-contact');
+                        }
+                    }}
+                    style={navLinkStyle}
+                    onMouseEnter={(e) => e.target.style.opacity = '0.5'}
+                    onMouseLeave={(e) => e.target.style.opacity = '1'}
+                >contact.</a>
+                <a
+                    href="/avolve"
+                    style={navLinkStyle}
+                    onMouseEnter={(e) => e.target.style.opacity = '0.5'}
+                    onMouseLeave={(e) => e.target.style.opacity = '1'}
+                >avolve.</a>
+            </nav>
         </header>
     );
 };
