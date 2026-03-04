@@ -2,11 +2,11 @@ export const projects = [
     {
         id: 101,
         slug: "avolve-app",
-        title: "Avolve",
-        description: "A mental health companion designed for growth, not dependency.",
-        longDescription: "Avolve is a mental health application focused on helping users reflect, build healthier habits, and navigate everyday emotional challenges in a supportive, non-intrusive way. The goal isn’t to replace therapy or offer diagnoses. It’s to provide a safe, accessible space for awareness, reflection, and personal growth.",
+        title: "AVOLVE",
+        description: "A mental health platform focused on helping people manage emotional well-being and loneliness through guided tools and support systems.",
+        longDescription: "A mental health platform focused on helping people manage emotional well-being and loneliness through guided tools and support systems. Built and developed under AVOLVE Studio. The goal isn’t to replace therapy or offer diagnoses. It’s to provide a safe, accessible space for awareness, reflection, and personal growth.",
         challenge: "Mental health apps often fall into one of two extremes: Overly clinical and intimidating, or overly gamified and shallow. Many tools focus on streaks, scores, or constant engagement, which can unintentionally create pressure instead of support.",
-        solution: "We wanted to build something different. Avolve is designed to feel calm, not overwhelming; supportive, not judgmental; and present, not addictive. The app encourages users to check in with themselves without feeling monitored or evaluated. Progress is personal. There are no comparisons.",
+        solution: "We wanted to build something different. AVOLVE is designed to feel calm, not overwhelming; supportive, not judgmental; and present, not addictive. The app encourages users to check in with themselves without feeling monitored or evaluated. Progress is personal. There are no comparisons.",
         image: "/images/ProjectA.png",
         link: "/avolve",
         internalLink: null, // We want to show the case study first, which links to the live /avolve page
