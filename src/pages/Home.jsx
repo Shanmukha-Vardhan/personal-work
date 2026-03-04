@@ -228,46 +228,53 @@ const Home = ({ category, searchQuery = '' }) => {
 
             {/* ===== LIFE ===== */}
             <section id="n-life" style={{
-                padding: '100px 48px',
-                maxWidth: '900px',
-                margin: '0 auto'
+                position: 'relative',
+                width: '100%',
+                minHeight: '100vh',
+                overflow: 'hidden'
             }}>
-                <p style={{
-                    fontSize: '1.1rem',
-                    lineHeight: 1.8,
-                    color: '#666',
-                    marginBottom: '40px',
-                    textAlign: 'center'
-                }}>
-                    While work happens, my time also goes into doing a bunch of other things — things that
-                    help make the mix very fun!
-                </p>
-
+                {/* Background image — full bleed */}
                 <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-                    gap: '16px'
+                    position: 'absolute',
+                    inset: 0,
+                    zIndex: 0
                 }}>
-                    {[
-                        'Expanding my concerts list 🎵',
-                        'Eating the yummiest food 🍕',
-                        'Gaming through late nights 🎮',
-                        'Building random ideas 💡',
-                        'Too much coffee ☕',
-                        'Exploring new places ✈️'
-                    ].map((item, i) => (
-                        <div key={i} style={{
-                            padding: '24px',
-                            background: '#f8f8f8',
-                            borderRadius: '12px',
-                            fontSize: '1rem',
-                            color: '#444',
-                            fontWeight: '400',
-                            textAlign: 'center'
-                        }}>
-                            {item}
-                        </div>
-                    ))}
+                    <img
+                        src="/images/bg.png"
+                        alt=""
+                        style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                            display: 'block'
+                        }}
+                    />
+                </div>
+
+                {/* Diary overlay — positioned on the left */}
+                <div style={{
+                    position: 'relative',
+                    zIndex: 1,
+                    display: 'flex',
+                    alignItems: 'center',
+                    minHeight: '100vh',
+                    padding: '60px 48px'
+                }}>
+                    <div style={{
+                        maxWidth: '480px',
+                        width: '45%'
+                    }}>
+                        <img
+                            src="/images/dairy.png"
+                            alt="A diary of things I love"
+                            style={{
+                                width: '100%',
+                                height: 'auto',
+                                display: 'block',
+                                filter: 'drop-shadow(0 20px 60px rgba(0,0,0,0.3))'
+                            }}
+                        />
+                    </div>
                 </div>
             </section>
 
