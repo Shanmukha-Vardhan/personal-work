@@ -133,14 +133,17 @@ const Home = ({ category, searchQuery = '' }) => {
                 </div>
             </section>
 
-            {/* AVOLVE Studio Section */}
+            {/* Featured Product: AVOLVE */}
             {!searchQuery && (
                 <section style={{ padding: '120px 0', background: 'rgba(255, 255, 255, 0.02)' }}>
                     <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                        <h2 style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '24px', color: 'var(--text-primary)' }}>AVOLVE Studio</h2>
-                        <p style={{ fontSize: '1.15rem', color: 'var(--text-secondary)', maxWidth: '600px', lineHeight: 1.6, marginBottom: '32px' }}>
-                            AVOLVE Studio is where I build and experiment with digital products.<br />
-                            It focuses on helping founders turn ideas into real tools and platforms.
+                        <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '16px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Featured Product</div>
+                        <h2 style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '24px', color: 'var(--text-primary)' }}>AVOLVE</h2>
+                        <p style={{ fontSize: '1.2rem', color: 'var(--text-primary)', maxWidth: '600px', lineHeight: 1.6, marginBottom: '16px', fontWeight: '500' }}>
+                            A mental health platform focused on helping people manage emotional well-being and loneliness through guided tools and support systems.
+                        </p>
+                        <p style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', maxWidth: '600px', lineHeight: 1.6, marginBottom: '40px' }}>
+                            Built and developed under <strong style={{ color: 'var(--text-primary)', fontWeight: '600' }}>AVOLVE Studio</strong>.
                         </p>
                         <a href="/avolve" style={{
                             display: 'inline-flex',
@@ -155,7 +158,7 @@ const Home = ({ category, searchQuery = '' }) => {
                             fontSize: '1rem',
                             transition: 'transform 0.2s ease, opacity 0.2s ease'
                         }}>
-                            Explore AVOLVE →
+                            View Product →
                         </a>
                     </div>
                 </section>
