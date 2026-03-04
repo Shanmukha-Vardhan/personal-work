@@ -1,96 +1,9 @@
-import React, { useEffect, useState, useRef, useLayoutEffect } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import React from 'react';
 
 const Hero = () => {
-    const heroRef = useRef(null);
-    const titleRef = useRef(null);
-    const subtitleRef = useRef(null);
-    const statusRef = useRef(null);
-    const visualRef = useRef(null);
-
-    // GSAP Animations - use useLayoutEffect to ensure DOM is ready
-    // GSAP Animations - use useLayoutEffect to ensure DOM is ready
-    useLayoutEffect(() => {
-        let ctx;
-
-        // Small delay to ensure React has rendered
-        const timer = setTimeout(() => {
-            if (!heroRef.current) return;
-
-            ctx = gsap.context(() => {
-                // Entrance timeline
-                const tl = gsap.timeline();
-
-                tl.fromTo(titleRef.current,
-                    { opacity: 0, y: 80 },
-                    { opacity: 1, y: 0, duration: 1.2, ease: 'power4.out' }
-                )
-                    .fromTo(subtitleRef.current,
-                        { opacity: 0, y: 40 },
-                        { opacity: 1, y: 0, duration: 1, ease: 'power4.out' },
-                        '-=0.8'
-                    )
-                    .fromTo(statusRef.current,
-                        { opacity: 0, y: 30 },
-                        { opacity: 1, y: 0, duration: 0.8, ease: 'power4.out' },
-                        '-=0.6'
-                    )
-                    .fromTo(visualRef.current,
-                        { opacity: 0, x: 100, scale: 0.9 },
-                        { opacity: 1, x: 0, scale: 1, duration: 1.2, ease: 'power4.out' },
-                        '-=1'
-                    );
-
-                // Parallax on scroll - title moves up and fades
-                gsap.to(titleRef.current, {
-                    y: -150,
-                    opacity: 0,
-                    scrollTrigger: {
-                        trigger: heroRef.current,
-                        start: 'top top',
-                        end: 'bottom top',
-                        scrub: 1.5,
-                    }
-                });
-
-                // Subtitle parallax (slower)
-                gsap.to(subtitleRef.current, {
-                    y: -80,
-                    opacity: 0,
-                    scrollTrigger: {
-                        trigger: heroRef.current,
-                        start: 'top top',
-                        end: '80% top',
-                        scrub: 1,
-                    }
-                });
-
-                // Visual parallax (moves up slightly)
-                gsap.to(visualRef.current, {
-                    y: -60,
-                    scrollTrigger: {
-                        trigger: heroRef.current,
-                        start: 'top top',
-                        end: 'bottom top',
-                        scrub: 1.2,
-                    }
-                });
-
-            }, heroRef);
-        }, 100);
-
-        return () => {
-            clearTimeout(timer);
-            if (ctx) ctx.revert();
-        };
-    }, []);
-
     return (
-        <section className="hero-section" ref={heroRef} style={{
-            paddingTop: '120px',
+        <section className="hero-section" style={{
+            paddingTop: '0px',
             paddingBottom: '100px',
             maxWidth: '1200px',
             margin: '0 auto',
@@ -99,10 +12,10 @@ const Hero = () => {
             display: 'grid',
             gridTemplateColumns: '1fr 1fr',
             gap: '80px',
-            alignItems: 'center'
+            alignItems: 'flex-start'
         }}>
             <div className="hero-content">
-                <h1 ref={titleRef} className="hero-title" style={{
+                <h1 className="hero-title" style={{
                     fontSize: '64px',
                     lineHeight: 1.05,
                     maxWidth: '520px',
@@ -110,10 +23,10 @@ const Hero = () => {
                     fontWeight: '700',
                     color: 'var(--text-primary)'
                 }}>
-                    Turning Ideas Into Real Products.
+                    Turning Ideas Into Real solutions.
                 </h1>
 
-                <div ref={subtitleRef} className="hero-intro" style={{
+                <div className="hero-intro" style={{
                     display: 'flex',
                     flexDirection: 'column'
                 }}>
@@ -151,7 +64,7 @@ const Hero = () => {
                             gap: '8px',
                             padding: '16px 32px',
                             background: 'var(--text-primary)',
-                            color: 'var(--bg-primary)',
+                            color: 'var(--bg-color)',
                             borderRadius: '50px',
                             textDecoration: 'none',
                             fontWeight: 600,
@@ -182,47 +95,48 @@ const Hero = () => {
                 </div>
             </div>
 
-            <div className="hero-visual" ref={visualRef} style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', width: '100%' }}>
+            <div className="hero-visual" style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', width: '100%' }}>
                 <div style={{
                     width: '100%',
-                    maxWidth: '420px',
-                    padding: '32px',
-                    borderRadius: '18px',
+                    maxWidth: '480px',
+                    padding: '24px',
+                    borderRadius: '16px',
                     background: '#f6f6f6',
                     boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
                     color: '#111',
                     display: 'flex',
                     flexDirection: 'column'
                 }}>
-                    <div style={{ fontSize: '0.8rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#666', marginBottom: '16px' }}>
+                    <div style={{ fontSize: '0.75rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#666', marginBottom: '12px' }}>
                         Featured Project (Best)
                     </div>
 
                     <img src="/images/ProjectA.png" alt="AVOLVE App UI Preview" style={{
                         width: '100%',
-                        height: 'auto',
+                        height: '240px',
                         objectFit: 'cover',
-                        borderRadius: '12px',
-                        marginBottom: '24px',
+                        objectPosition: 'top',
+                        borderRadius: '10px',
+                        marginBottom: '20px',
                         boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
                         border: '1px solid rgba(0,0,0,0.05)'
                     }} />
 
-                    <h3 style={{ fontSize: '1.5rem', fontWeight: '700', margin: '0 0 12px 0', color: '#111' }}>
+                    <h3 style={{ fontSize: '1.25rem', fontWeight: '700', margin: '0 0 8px 0', color: '#111' }}>
                         AVOLVE
                     </h3>
 
-                    <p style={{ fontSize: '0.95rem', color: '#444', lineHeight: 1.6, margin: '0 0 24px 0' }}>
+                    <p style={{ fontSize: '0.85rem', color: '#444', lineHeight: 1.5, margin: '0 0 20px 0' }}>
                         Mental health platform focused on helping people manage loneliness, emotional stress, and self-reflection.
                     </p>
 
-                    <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '32px' }}>
+                    <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginBottom: '24px' }}>
                         {['Next.js', 'Supabase', 'Product Design'].map(tag => (
                             <span key={tag} style={{
-                                padding: '6px 12px',
+                                padding: '4px 10px',
                                 background: 'rgba(0,0,0,0.05)',
                                 borderRadius: '50px',
-                                fontSize: '0.8rem',
+                                fontSize: '0.75rem',
                                 fontWeight: '600',
                                 color: '#333'
                             }}>
@@ -234,11 +148,11 @@ const Hero = () => {
                     <a href="/avolve" style={{
                         display: 'inline-flex',
                         alignItems: 'center',
-                        gap: '8px',
+                        gap: '6px',
                         fontWeight: '600',
                         color: '#111',
                         textDecoration: 'none',
-                        fontSize: '0.95rem',
+                        fontSize: '0.85rem',
                         transition: 'opacity 0.2s ease'
                     }}>
                         View Project →
