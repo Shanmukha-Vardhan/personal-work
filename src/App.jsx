@@ -14,8 +14,7 @@ import Projects from './pages/Projects';
 import About from './pages/About';
 import Avolve from './pages/Avolve';
 import ProjectDetail from './pages/ProjectDetail';
-import ScrollProgress from './components/ScrollProgress';
-import NoiseOverlay from './components/NoiseOverlay';
+// Removed: ScrollProgress, NoiseOverlay — clean flat design
 import { AnimatePresence, motion } from 'framer-motion';
 import { Analytics } from '@vercel/analytics/react';
 
@@ -118,8 +117,7 @@ function AppContent() {
 
   return (
     <div className={`app-container ${isZenMode ? 'zen-mode' : ''} ${isMobileSidebarOpen ? 'mobile-sidebar-open' : ''}`}>
-      <ScrollProgress />
-      <NoiseOverlay />
+
       <CommandPalette isZenMode={isZenMode} setIsZenMode={setIsZenMode} />
       <Scratchpad />
       <TaskBoard />
