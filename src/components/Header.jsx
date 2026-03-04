@@ -1,9 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
 import GlassSurface from './GlassSurface';
 
 const Header = ({ searchQuery, onSearch, onToggleSidebar }) => {
+    const { pathname } = useLocation();
+    const isHome = pathname === '/';
+
     return (
         <header style={{
             display: 'flex',
@@ -60,11 +62,22 @@ const Header = ({ searchQuery, onSearch, onToggleSidebar }) => {
                         gap: '32px',
                         margin: 0
                     }}>
-                        <Link to="/avolve" className="nav-link desktop-only" style={{ color: 'var(--text-primary)', fontWeight: '600', textDecoration: 'none', fontSize: '0.95rem' }}>AVOLVE</Link>
-                        <Link to="/projects" className="nav-link desktop-only" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.95rem' }}>Work</Link>
-                        <a href="#services" className="nav-link desktop-only" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.95rem' }}>Services</a>
-                        <Link to="/about" className="nav-link desktop-only" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.95rem' }}>About</Link>
-                        <Link to="/contact" className="nav-link desktop-only" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.95rem' }}>Contact</Link>
+                        {isHome ? (
+                            <>
+                                <a href="#about" className="nav-link desktop-only" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.95rem' }}>about.</a>
+                                <a href="#work" className="nav-link desktop-only" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.95rem' }}>projects.</a>
+                                <Link to="/avolve" className="nav-link desktop-only" style={{ color: 'var(--text-primary)', fontWeight: '600', textDecoration: 'none', fontSize: '0.95rem' }}>avolve.</Link>
+                                <Link to="/contact" className="nav-link desktop-only" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.95rem' }}>contact.</Link>
+                            </>
+                        ) : (
+                            <>
+                                <Link to="/" className="nav-link desktop-only" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.95rem' }}>home.</Link>
+                                <Link to="/projects" className="nav-link desktop-only" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.95rem' }}>projects.</Link>
+                                <Link to="/avolve" className="nav-link desktop-only" style={{ color: 'var(--text-primary)', fontWeight: '600', textDecoration: 'none', fontSize: '0.95rem' }}>avolve.</Link>
+                                <Link to="/about" className="nav-link desktop-only" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.95rem' }}>about.</Link>
+                                <Link to="/contact" className="nav-link desktop-only" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.95rem' }}>contact.</Link>
+                            </>
+                        )}
                     </nav>
                 </div>
             </GlassSurface>
