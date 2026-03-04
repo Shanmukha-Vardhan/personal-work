@@ -138,7 +138,8 @@ const Hero = () => {
                         lineHeight: 1.6,
                         maxWidth: '480px'
                     }}>
-                        I help early-stage startups build MVPs and help local businesses create modern websites that bring them online.
+                        I build MVPs for early-stage startups and modern websites for businesses.<br />
+                        I also build my own products through AVOLVE Studio.
                     </p>
 
                     {/* Buttons */}
