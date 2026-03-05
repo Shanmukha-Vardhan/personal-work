@@ -243,6 +243,65 @@ const HorizontalProjects = ({ projects }) => {
                         </div>
                     </Link>
                 ))}
+
+                {/* View All Works CTA card */}
+                <Link
+                    to="/projects"
+                    style={{ textDecoration: 'none', color: 'inherit' }}
+                >
+                    <div
+                        className="h-project-card"
+                        style={{
+                            width: '480px',
+                            height: '65vh',
+                            minHeight: '450px',
+                            maxHeight: '680px',
+                            background: '#1a1a1a',
+                            borderRadius: '16px',
+                            overflow: 'hidden',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            gap: '20px',
+                            cursor: 'pointer',
+                            transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+                        }}
+                        onMouseEnter={(e) => {
+                            e.currentTarget.style.transform = 'translateY(-8px)';
+                            e.currentTarget.style.boxShadow = '0 20px 60px rgba(0,0,0,0.15)';
+                        }}
+                        onMouseLeave={(e) => {
+                            e.currentTarget.style.transform = 'translateY(0)';
+                            e.currentTarget.style.boxShadow = 'none';
+                        }}
+                    >
+                        <span style={{
+                            fontSize: '1rem',
+                            color: '#7b8ea8',
+                            fontFamily: "'DM Serif Display', Georgia, serif",
+                            letterSpacing: '0.05em'
+                        }}>
+                            want to see more?
+                        </span>
+                        <span style={{
+                            fontSize: 'clamp(1.8rem, 3vw, 2.5rem)',
+                            fontWeight: '400',
+                            color: '#ffffff',
+                            fontFamily: "'DM Serif Display', Georgia, serif"
+                        }}>
+                            view all works.
+                        </span>
+                        <span style={{
+                            fontSize: '2rem',
+                            color: '#ffffff',
+                            marginTop: '8px',
+                            transition: 'transform 0.3s ease'
+                        }}>
+                            →
+                        </span>
+                    </div>
+                </Link>
             </div>
         </section>
     );
