@@ -44,7 +44,7 @@ const Hero = () => {
                 height="12"
                 viewBox="0 0 320 12"
                 fill="none"
-                style={{ maxWidth: '60%', marginBottom: '80px' }}
+                style={{ maxWidth: '60%', marginBottom: '16px' }}
             >
                 <path
                     d="M2 8 C40 2, 80 10, 120 5 S200 1, 240 7 S300 3, 318 6"
@@ -55,9 +55,21 @@ const Hero = () => {
                 />
             </svg>
 
-            {/* Hero Image — collage-style */}
+            {/* Subtitle */}
+            <p style={{
+                fontSize: '1.05rem',
+                color: '#888',
+                fontWeight: '400',
+                letterSpacing: '0.03em',
+                marginBottom: '60px',
+                fontFamily: "system-ui, -apple-system, sans-serif"
+            }}>
+                developer & product maker from vizag
+            </p>
+
+            {/* Hero Image — larger on desktop */}
             <div style={{
-                maxWidth: '600px',
+                maxWidth: '750px',
                 width: '100%'
             }}>
                 <img
@@ -71,6 +83,35 @@ const Hero = () => {
                     }}
                 />
             </div>
+
+            {/* Scroll hint */}
+            <div style={{
+                marginTop: '48px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '6px',
+                opacity: 0.5,
+                animation: 'heroFloat 2s ease-in-out infinite'
+            }}>
+                <span style={{
+                    fontSize: '0.7rem',
+                    letterSpacing: '0.15em',
+                    textTransform: 'uppercase',
+                    color: '#999',
+                    fontFamily: "system-ui, -apple-system, sans-serif"
+                }}>scroll</span>
+                <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
+                    <path d="M8 4L8 18M8 18L2 12M8 18L14 12" stroke="#999" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+            </div>
+
+            <style>{`
+                @keyframes heroFloat {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(6px); }
+                }
+            `}</style>
         </section>
     );
 };
