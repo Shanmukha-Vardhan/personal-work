@@ -183,8 +183,9 @@ const Home = ({ category, searchQuery = '' }) => {
                     padding: '60px 48px'
                 }}>
                     <div style={{
-                        maxWidth: '480px',
-                        width: '45%'
+                        maxWidth: '560px', /* slightly wider to fit everything nicely */
+                        width: '50%',
+                        position: 'relative'
                     }}>
                         <img
                             src="/images/dairy.png"
@@ -196,6 +197,125 @@ const Home = ({ category, searchQuery = '' }) => {
                                 filter: 'drop-shadow(0 20px 60px rgba(0,0,0,0.3))'
                             }}
                         />
+
+                        {/* Content inside the notebook */}
+                        <div style={{
+                            position: 'absolute',
+                            top: '8%',
+                            bottom: '8%',
+                            left: '12%',
+                            right: '20%', // Leave space for the clip
+                            zIndex: 2,
+                            fontFamily: '"Caveat", cursive',
+                            color: '#1e293b', // slate-800
+                            fontSize: 'clamp(1.1rem, 1.8vw, 1.6rem)',
+                            lineHeight: '1.2'
+                        }}>
+                            {/* Text 1: Top Left */}
+                            <div style={{
+                                position: 'absolute',
+                                top: '4%',
+                                left: '2%',
+                                width: '55%',
+                                transform: 'rotate(-1deg)'
+                            }}>
+                                Spending hours building things that actually matter -
+                                <br />and trying to make the code look clean! 🚀
+                            </div>
+
+                            {/* Photo 1: User's Image (Top Right) */}
+                            <div style={{
+                                position: 'absolute',
+                                top: '8%',
+                                right: '-8%',
+                                width: '45%',
+                                padding: '3%',
+                                backgroundColor: '#fff',
+                                boxShadow: '2px 4px 12px rgba(0,0,0,0.15)',
+                                transform: 'rotate(6deg)',
+                                borderRadius: '4px'
+                            }}>
+                                <img src="/images/life-diary.avif" alt="Life" style={{ width: '100%', aspectRatio: '1/1', objectFit: 'cover', borderRadius: '2px' }} />
+                                <div style={{ fontSize: '0.8em', marginTop: '6%', textAlign: 'center', color: '#64748b' }}>
+                                    Offline mode
+                                </div>
+                            </div>
+
+                            {/* Doodle: Blue Arrow */}
+                            <svg viewBox="0 0 100 100" style={{
+                                position: 'absolute',
+                                top: '32%',
+                                right: '15%',
+                                width: '18%',
+                                transform: 'rotate(15deg)',
+                                stroke: '#3b82f6', // blue instead of pink
+                                strokeWidth: 3,
+                                fill: 'none'
+                            }}>
+                                <path d="M10,10 C40,40 50,70 90,80 M70,70 L90,80 L80,95" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+
+                            {/* Text 2: Middle */}
+                            <div style={{
+                                position: 'absolute',
+                                top: '42%',
+                                left: '5%',
+                                width: '42%',
+                                transform: 'rotate(-2deg)'
+                            }}>
+                                <span style={{ color: '#059669', fontSize: '1.2em' }}>Tech & Coffee</span><br />
+                                fueling the late-night deployment sessions.
+                            </div>
+
+                            {/* Photo 2: Bottom Left */}
+                            <div style={{
+                                position: 'absolute',
+                                bottom: '4%',
+                                left: '2%',
+                                width: '48%',
+                                padding: '4%',
+                                backgroundColor: '#fff',
+                                boxShadow: '1px 3px 10px rgba(0,0,0,0.12)',
+                                transform: 'rotate(-4deg)',
+                                borderRadius: '4px'
+                            }}>
+                                <img src="/images/life-diary.avif" alt="Life 2" style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', borderRadius: '2px', filter: 'grayscale(30%) contrast(1.1)' }} />
+                            </div>
+
+                            {/* Text 3: Bottom Right */}
+                            <div style={{
+                                position: 'absolute',
+                                bottom: '15%',
+                                right: '2%',
+                                width: '35%',
+                                transform: 'rotate(2deg)',
+                                letterSpacing: '1px',
+                                textAlign: 'center'
+                            }}>
+                                LIVING <br />
+                                <span style={{ fontSize: '0.8em' }}>a little bit more everyday</span>
+                                <div style={{
+                                    marginTop: '8px',
+                                    width: '100%',
+                                    height: '3px',
+                                    backgroundColor: '#fbbf24', // golden yellow stroke
+                                    borderRadius: '2px',
+                                    transform: 'rotate(-1deg)'
+                                }}></div>
+                            </div>
+
+                            {/* Extra doodle: neutral sparkles */}
+                            <div style={{
+                                position: 'absolute',
+                                bottom: '30%',
+                                right: '10%',
+                                color: '#f59e0b',
+                                fontSize: '1.4em',
+                                transform: 'rotate(5deg)'
+                            }}>
+                                ✦ ✧
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
