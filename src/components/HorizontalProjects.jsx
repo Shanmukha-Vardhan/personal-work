@@ -244,64 +244,40 @@ const HorizontalProjects = ({ projects }) => {
                     </Link>
                 ))}
 
-                {/* View All Works CTA card */}
-                <Link
-                    to="/projects"
-                    style={{ textDecoration: 'none', color: 'inherit' }}
-                >
-                    <div
-                        className="h-project-card"
+                {/* View All — simple button */}
+                <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    paddingLeft: '40px'
+                }}>
+                    <Link
+                        to="/projects"
                         style={{
-                            width: '480px',
-                            height: '65vh',
-                            minHeight: '450px',
-                            maxHeight: '680px',
-                            background: '#1a1a1a',
-                            borderRadius: '16px',
-                            overflow: 'hidden',
-                            display: 'flex',
-                            flexDirection: 'column',
+                            textDecoration: 'none',
+                            display: 'inline-flex',
                             alignItems: 'center',
-                            justifyContent: 'center',
-                            gap: '20px',
-                            cursor: 'pointer',
-                            transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+                            gap: '8px',
+                            padding: '14px 32px',
+                            border: '1px solid #1a1a1a',
+                            borderRadius: '100px',
+                            color: '#1a1a1a',
+                            fontSize: '0.95rem',
+                            fontFamily: "'DM Serif Display', Georgia, serif",
+                            transition: 'all 0.3s ease',
+                            whiteSpace: 'nowrap'
                         }}
                         onMouseEnter={(e) => {
-                            e.currentTarget.style.transform = 'translateY(-8px)';
-                            e.currentTarget.style.boxShadow = '0 20px 60px rgba(0,0,0,0.15)';
+                            e.currentTarget.style.background = '#1a1a1a';
+                            e.currentTarget.style.color = '#ffffff';
                         }}
                         onMouseLeave={(e) => {
-                            e.currentTarget.style.transform = 'translateY(0)';
-                            e.currentTarget.style.boxShadow = 'none';
+                            e.currentTarget.style.background = 'transparent';
+                            e.currentTarget.style.color = '#1a1a1a';
                         }}
                     >
-                        <span style={{
-                            fontSize: '1rem',
-                            color: '#7b8ea8',
-                            fontFamily: "'DM Serif Display', Georgia, serif",
-                            letterSpacing: '0.05em'
-                        }}>
-                            want to see more?
-                        </span>
-                        <span style={{
-                            fontSize: 'clamp(1.8rem, 3vw, 2.5rem)',
-                            fontWeight: '400',
-                            color: '#ffffff',
-                            fontFamily: "'DM Serif Display', Georgia, serif"
-                        }}>
-                            view all works.
-                        </span>
-                        <span style={{
-                            fontSize: '2rem',
-                            color: '#ffffff',
-                            marginTop: '8px',
-                            transition: 'transform 0.3s ease'
-                        }}>
-                            →
-                        </span>
-                    </div>
-                </Link>
+                        view all works <span style={{ fontSize: '1.1rem' }}>→</span>
+                    </Link>
+                </div>
             </div>
         </section>
     );
