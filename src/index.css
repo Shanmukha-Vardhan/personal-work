@@ -1332,6 +1332,29 @@ main {
   .cmd-overlay {
     padding-top: 0;
   }
+
+  /* Life Section — diary responsive */
+  #n-life>div:last-child {
+    padding: 40px 20px !important;
+  }
+
+  #n-life>div:last-child>div {
+    width: 90% !important;
+    max-width: 100% !important;
+  }
+
+  /* Header responsive padding */
+  header {
+    padding: 20px 20px !important;
+  }
+
+  /* Sections responsive padding */
+  #n-about,
+  #n-project,
+  #n-contact {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
 }
 
 /* Footer */

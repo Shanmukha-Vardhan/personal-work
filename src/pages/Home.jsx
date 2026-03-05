@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { projects } from '../data/projects';
 import Hero from '../components/Hero';
+import HorizontalProjects from '../components/HorizontalProjects';
 import SEO from '../components/SEO';
 
 const Home = ({ category, searchQuery = '' }) => {
@@ -144,87 +145,8 @@ const Home = ({ category, searchQuery = '' }) => {
                 </div>
             </section>
 
-            {/* ===== SELECTED PROJECTS ===== */}
-            <section id="n-project" style={{
-                padding: '100px 48px',
-                maxWidth: '900px',
-                margin: '0 auto'
-            }}>
-                {/* "selected projects." heading */}
-                <div style={{
-                    textAlign: 'center',
-                    marginBottom: '80px'
-                }}>
-                    <h2 style={{
-                        fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-                        fontWeight: '400',
-                        color: '#1a1a1a',
-                        fontFamily: "'DM Serif Display', Georgia, serif",
-                        lineHeight: 1.2,
-                        margin: 0
-                    }}>
-                        selected<br />projects.
-                    </h2>
-                </div>
-
-                {/* Project list */}
-                <div style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '0'
-                }}>
-                    {selectedProjects.map((project, index) => (
-                        <Link
-                            key={project.id}
-                            to={project.slug === 'avolve-app' ? '/avolve' : `/projects/${project.slug}`}
-                            style={{ textDecoration: 'none', color: 'inherit' }}
-                        >
-                            <div style={{
-                                display: 'grid',
-                                gridTemplateColumns: '80px 1fr',
-                                gap: '24px',
-                                padding: '40px 0',
-                                borderBottom: '1px solid #e8e8e8',
-                                alignItems: 'start',
-                                transition: 'opacity 0.2s ease',
-                                cursor: 'pointer'
-                            }}
-                                onMouseEnter={(e) => e.currentTarget.style.opacity = '0.6'}
-                                onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
-                            >
-                                <div style={{
-                                    fontSize: '0.85rem',
-                                    color: '#1a1a1a',
-                                    fontWeight: '600',
-                                    paddingTop: '4px'
-                                }}>
-                                    0{index + 1}/ {project.title.split(' ')[0]}
-                                </div>
-
-                                <div>
-                                    <h3 style={{
-                                        fontSize: '1.25rem',
-                                        fontWeight: '500',
-                                        marginBottom: '8px',
-                                        color: '#1a1a1a'
-                                    }}>
-                                        {project.title}
-                                    </h3>
-                                    <p style={{
-                                        fontSize: '1rem',
-                                        color: '#666',
-                                        lineHeight: 1.7,
-                                        margin: 0,
-                                        maxWidth: '600px'
-                                    }}>
-                                        {project.description}
-                                    </p>
-                                </div>
-                            </div>
-                        </Link>
-                    ))}
-                </div>
-            </section>
+            {/* ===== SELECTED PROJECTS — Horizontal Scroll ===== */}
+            <HorizontalProjects projects={selectedProjects} />
 
             {/* ===== LIFE ===== */}
             <section id="n-life" style={{
