@@ -27,25 +27,33 @@ const Hero = () => {
             {/* Name */}
             <h1 style={{
                 fontSize: 'clamp(3rem, 8vw, 5.5rem)',
-                fontWeight: '400',
+                fontWeight: '500',
                 color: '#1a1a1a',
                 lineHeight: 1.15,
                 marginBottom: '8px',
-                fontFamily: "'DM Serif Display', Georgia, serif",
-                letterSpacing: '-0.01em'
+                fontFamily: "'Playfair Display', Georgia, serif",
+                fontStyle: 'italic',
+                letterSpacing: '-0.02em'
             }}>
                 shanmukha vardhan
             </h1>
 
-            {/* Underline accent */}
-            <div style={{
-                width: '320px',
-                maxWidth: '60%',
-                height: '3px',
-                background: '#7b8ea8',
-                borderRadius: '2px',
-                marginBottom: '80px'
-            }} />
+            {/* Hand-drawn underline accent */}
+            <svg
+                width="320"
+                height="12"
+                viewBox="0 0 320 12"
+                fill="none"
+                style={{ maxWidth: '60%', marginBottom: '80px' }}
+            >
+                <path
+                    d="M2 8 C40 2, 80 10, 120 5 S200 1, 240 7 S300 3, 318 6"
+                    stroke="#7b8ea8"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    fill="none"
+                />
+            </svg>
 
             {/* Hero Image — collage-style */}
             <div style={{
