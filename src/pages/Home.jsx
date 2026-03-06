@@ -180,12 +180,14 @@ const Home = ({ category, searchQuery = '' }) => {
                     display: 'flex',
                     alignItems: 'center',
                     minHeight: '100vh',
-                    padding: '60px 48px'
+                    padding: '40px 0' // Removed left padding so we can bring it closer to the edge
                 }}>
                     <div style={{
-                        maxWidth: '560px', /* slightly wider to fit everything nicely */
-                        width: '50%',
-                        position: 'relative'
+                        width: '90%',
+                        maxWidth: '850px', // Increased max-width
+                        minWidth: '500px',
+                        position: 'relative',
+                        marginLeft: '-4%' // Push it left to simulate the cut edge
                     }}>
                         <img
                             src="/images/dairy.png"
@@ -194,126 +196,111 @@ const Home = ({ category, searchQuery = '' }) => {
                                 width: '100%',
                                 height: 'auto',
                                 display: 'block',
-                                filter: 'drop-shadow(0 20px 60px rgba(0,0,0,0.3))'
+                                filter: 'drop-shadow(0 20px 60px rgba(0,0,0,0.4))'
                             }}
                         />
 
                         {/* Content inside the notebook */}
                         <div style={{
                             position: 'absolute',
-                            top: '8%',
-                            bottom: '8%',
-                            left: '12%',
-                            right: '20%', // Leave space for the clip
+                            top: '10%',
+                            bottom: '25%', // Increased significantly so bottom text doesn't fall off
+                            left: '12%', // Reduced left margin to fill the white space on the left
+                            right: '25%', // Increased right margin to pull everything off the rings/right edge
                             zIndex: 2,
                             fontFamily: '"Caveat", cursive',
-                            color: '#1e293b', // slate-800
-                            fontSize: 'clamp(1.1rem, 1.8vw, 1.6rem)',
+                            color: '#1e293b',
+                            fontSize: 'clamp(1rem, 1.8vw, 1.6rem)',
                             lineHeight: '1.2'
                         }}>
-                            {/* Text 1: Top Left */}
+                            {/* Intro Text */}
                             <div style={{
                                 position: 'absolute',
-                                top: '4%',
-                                left: '2%',
-                                width: '55%',
-                                transform: 'rotate(-1deg)'
+                                top: '0',
+                                left: '0',
+                                width: '100%',
+                                transform: 'rotate(-2deg)'
                             }}>
-                                Spending hours building things that actually matter -
-                                <br />and trying to make the code look clean! 🚀
+                                Spending hours building things that actually matter —<br />
+                                and trying to make the code look clean! 🚀
                             </div>
 
-                            {/* Photo 1: User's Image (Top Right) */}
+                            {/* Photo 1 (Server Room) */}
                             <div style={{
                                 position: 'absolute',
-                                top: '8%',
-                                right: '-8%',
-                                width: '45%',
-                                padding: '3%',
-                                backgroundColor: '#fff',
-                                boxShadow: '2px 4px 12px rgba(0,0,0,0.15)',
-                                transform: 'rotate(6deg)',
-                                borderRadius: '4px'
+                                top: '15%', left: '2%', width: '40%',
+                                padding: '3%', backgroundColor: '#fdfdfd', boxShadow: '2px 4px 12px rgba(0,0,0,0.15)',
+                                transform: 'rotate(-4deg)', borderRadius: '2px', zIndex: 1
                             }}>
-                                <img src="/images/life-diary.avif" alt="Life" style={{ width: '100%', aspectRatio: '1/1', objectFit: 'cover', borderRadius: '2px' }} />
-                                <div style={{ fontSize: '0.8em', marginTop: '6%', textAlign: 'center', color: '#64748b' }}>
-                                    Offline mode
+                                <div style={{ position: 'absolute', top: '-12px', left: '35%', width: '30%', height: '22px', backgroundColor: 'rgba(255, 255, 255, 0.65)', boxShadow: '0 1px 2px rgba(0,0,0,0.1)', transform: 'rotate(-2deg)', zIndex: 3 }}></div>
+                                <img src="/images/IMG_2993.jpg" alt="Server Room" style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', borderRadius: '1px' }} />
+                                <div style={{ fontSize: '0.8em', marginTop: '6%', textAlign: 'center', color: '#475569', lineHeight: '1' }}>
+                                    where magic happens 💻
                                 </div>
                             </div>
 
-                            {/* Doodle: Blue Arrow */}
-                            <svg viewBox="0 0 100 100" style={{
-                                position: 'absolute',
-                                top: '32%',
-                                right: '15%',
-                                width: '18%',
-                                transform: 'rotate(15deg)',
-                                stroke: '#3b82f6', // blue instead of pink
-                                strokeWidth: 3,
-                                fill: 'none'
-                            }}>
-                                <path d="M10,10 C40,40 50,70 90,80 M70,70 L90,80 L80,95" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-
-                            {/* Text 2: Middle */}
+                            {/* Photo 2 (Dog) */}
                             <div style={{
                                 position: 'absolute',
-                                top: '42%',
-                                left: '5%',
-                                width: '42%',
-                                transform: 'rotate(-2deg)'
+                                top: '22%', right: '2%', width: '38%',
+                                padding: '3%', backgroundColor: '#fdfdfd', boxShadow: '2px 4px 12px rgba(0,0,0,0.15)',
+                                transform: 'rotate(5deg)', borderRadius: '2px', zIndex: 2
                             }}>
-                                <span style={{ color: '#059669', fontSize: '1.2em' }}>Tech & Coffee</span><br />
-                                fueling the late-night deployment sessions.
+                                <div style={{ position: 'absolute', top: '-12px', left: '35%', width: '30%', height: '22px', backgroundColor: 'rgba(255, 255, 255, 0.65)', boxShadow: '0 1px 2px rgba(0,0,0,0.1)', transform: 'rotate(1deg)', zIndex: 3 }}></div>
+                                <img src="/images/IMG20230727223842_Original.jpg" alt="Dog" style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', borderRadius: '1px' }} />
+                                <div style={{ fontSize: '0.8em', marginTop: '6%', textAlign: 'center', color: '#475569', lineHeight: '1' }}>
+                                    my fav distraction 🐾
+                                </div>
                             </div>
 
-                            {/* Photo 2: Bottom Left */}
+                            {/* Photo 3 (Architecture) */}
                             <div style={{
                                 position: 'absolute',
-                                bottom: '4%',
-                                left: '2%',
-                                width: '48%',
-                                padding: '4%',
-                                backgroundColor: '#fff',
-                                boxShadow: '1px 3px 10px rgba(0,0,0,0.12)',
-                                transform: 'rotate(-4deg)',
-                                borderRadius: '4px'
+                                top: '48%', left: '8%', width: '34%',
+                                padding: '3%', backgroundColor: '#fdfdfd', boxShadow: '2px 4px 12px rgba(0,0,0,0.15)',
+                                transform: 'rotate(2deg)', borderRadius: '2px', zIndex: 2
                             }}>
-                                <img src="/images/life-diary.avif" alt="Life 2" style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', borderRadius: '2px', filter: 'grayscale(30%) contrast(1.1)' }} />
+                                <div style={{ position: 'absolute', top: '-12px', left: '35%', width: '30%', height: '22px', backgroundColor: 'rgba(255, 255, 255, 0.65)', boxShadow: '0 1px 2px rgba(0,0,0,0.1)', transform: 'rotate(-1deg)', zIndex: 3 }}></div>
+                                <img src="/images/IMG_0539.JPG" alt="Architecture" style={{ width: '100%', aspectRatio: '1', objectFit: 'cover', borderRadius: '1px' }} />
+                                <div style={{ fontSize: '0.8em', marginTop: '6%', textAlign: 'center', color: '#475569', lineHeight: '1' }}>
+                                    chasing aesthetics
+                                </div>
                             </div>
 
-                            {/* Text 3: Bottom Right */}
+                            {/* Photo 4 (Selfie) */}
                             <div style={{
                                 position: 'absolute',
-                                bottom: '15%',
-                                right: '2%',
-                                width: '35%',
-                                transform: 'rotate(2deg)',
-                                letterSpacing: '1px',
-                                textAlign: 'center'
+                                top: '55%', right: '5%', width: '42%',
+                                padding: '3%', backgroundColor: '#fdfdfd', boxShadow: '2px 4px 12px rgba(0,0,0,0.15)',
+                                transform: 'rotate(-3deg)', borderRadius: '2px', zIndex: 1
                             }}>
-                                LIVING <br />
-                                <span style={{ fontSize: '0.8em' }}>a little bit more everyday</span>
+                                <div style={{ position: 'absolute', top: '-12px', left: '35%', width: '30%', height: '22px', backgroundColor: 'rgba(255, 255, 255, 0.65)', boxShadow: '0 1px 2px rgba(0,0,0,0.1)', transform: 'rotate(2deg)', zIndex: 3 }}></div>
+                                <img src="/images/IMG_1711.png" alt="Selfie" style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', borderRadius: '1px' }} />
+                                <div style={{ fontSize: '0.8em', marginTop: '6%', textAlign: 'center', color: '#475569', lineHeight: '1' }}>
+                                    always focused ⚡️
+                                </div>
+                            </div>
+
+                            {/* Text: Bottom Synopsis */}
+                            <div style={{
+                                position: 'absolute',
+                                bottom: '0',
+                                width: '100%',
+                                transform: 'rotate(1deg)',
+                                textAlign: 'right',
+                                letterSpacing: '0.5px'
+                            }}>
+                                <span style={{ fontSize: '0.9em' }}>Building the future in server rooms, chasing aesthetics in quiet galleries, unwinding with my dog... </span> <br />
+                                <span style={{ textTransform: 'uppercase', marginTop: '4px', display: 'inline-block' }}>EVERYTHING TELLS A STORY</span> <br />
+                                <span style={{ fontSize: '0.85em', color: '#64748b' }}>living a little bit more everyday.</span>
                                 <div style={{
                                     marginTop: '8px',
                                     width: '100%',
                                     height: '3px',
-                                    backgroundColor: '#fbbf24', // golden yellow stroke
+                                    backgroundColor: '#0f172a',
                                     borderRadius: '2px',
                                     transform: 'rotate(-1deg)'
                                 }}></div>
-                            </div>
-
-                            {/* Extra doodle: neutral sparkles */}
-                            <div style={{
-                                position: 'absolute',
-                                bottom: '30%',
-                                right: '10%',
-                                color: '#f59e0b',
-                                fontSize: '1.4em',
-                                transform: 'rotate(5deg)'
-                            }}>
-                                ✦ ✧
                             </div>
                         </div>
                     </div>
