@@ -281,27 +281,6 @@ const Home = ({ category, searchQuery = '' }) => {
                                 </div>
                             </div>
 
-                            {/* Text: Bottom Synopsis */}
-                            <div style={{
-                                position: 'absolute',
-                                bottom: '0',
-                                width: '100%',
-                                transform: 'rotate(1deg)',
-                                textAlign: 'right',
-                                letterSpacing: '0.5px'
-                            }}>
-                                <span style={{ fontSize: '0.9em' }}>Building the future in server rooms, chasing aesthetics in quiet galleries, unwinding with my dog... </span> <br />
-                                <span style={{ textTransform: 'uppercase', marginTop: '4px', display: 'inline-block' }}>EVERYTHING TELLS A STORY</span> <br />
-                                <span style={{ fontSize: '0.85em', color: '#64748b' }}>living a little bit more everyday.</span>
-                                <div style={{
-                                    marginTop: '8px',
-                                    width: '100%',
-                                    height: '3px',
-                                    backgroundColor: '#0f172a',
-                                    borderRadius: '2px',
-                                    transform: 'rotate(-1deg)'
-                                }}></div>
-                            </div>
                         </div>
                     </div>
                 </div>
