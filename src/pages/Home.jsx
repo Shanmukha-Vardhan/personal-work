@@ -162,7 +162,7 @@ const Home = ({ category, searchQuery = '' }) => {
                     zIndex: 0
                 }}>
                     <img
-                        src="/images/bg.png"
+                        src="/images/13AB1417-5FFD-41B1-870C-FA2A0843CB41_1_105_c.jpeg"
                         alt=""
                         style={{
                             width: '100%',
@@ -335,7 +335,7 @@ const Home = ({ category, searchQuery = '' }) => {
                     </div>
                     <div>
                         <div style={{ fontSize: '0.8rem', fontWeight: '600', color: '#999', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '8px' }}>Location</div>
-                        <span style={{ color: '#1a1a1a', fontSize: '0.95rem' }}>Hyderabad, India</span>
+                        <span style={{ color: '#1a1a1a', fontSize: '0.95rem' }}>Vizag, India</span>
                     </div>
                 </div>
             </section>

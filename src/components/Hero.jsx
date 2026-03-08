@@ -70,7 +70,9 @@ const Hero = () => {
             {/* Hero Image — larger on desktop */}
             <div style={{
                 maxWidth: '750px',
-                width: '100%'
+                width: '100%',
+                opacity: 0,
+                animation: 'fadeImageIn 1.2s ease-out 0.3s forwards' // Added fade-in animation
             }}>
                 <img
                     src="/images/img1.png"
@@ -79,7 +81,8 @@ const Hero = () => {
                         width: '100%',
                         height: 'auto',
                         display: 'block',
-                        objectFit: 'contain'
+                        objectFit: 'contain',
+                        mixBlendMode: 'multiply' // This removes the white rectangle background!
                     }}
                 />
             </div>
@@ -91,8 +94,8 @@ const Hero = () => {
                 flexDirection: 'column',
                 alignItems: 'center',
                 gap: '6px',
-                opacity: 0.5,
-                animation: 'heroFloat 2s ease-in-out infinite'
+                opacity: 0,
+                animation: 'heroFloat 2s ease-in-out infinite, fadeImageIn 1s ease-out 1s forwards'
             }}>
                 <span style={{
                     fontSize: '0.7rem',
@@ -110,6 +113,16 @@ const Hero = () => {
                 @keyframes heroFloat {
                     0%, 100% { transform: translateY(0); }
                     50% { transform: translateY(6px); }
+                }
+                @keyframes fadeImageIn {
+                    from {
+                        opacity: 0;
+                        transform: translateY(20px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
                 }
             `}</style>
         </section>
