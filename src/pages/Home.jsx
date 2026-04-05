@@ -58,7 +58,7 @@ const Home = ({ category, searchQuery = '' }) => {
     }
 
     // Best 4 projects — curated
-    const selectedProjects = projects.filter(p => [101, 102, 11, 1].includes(p.id));
+    const selectedProjects = projects.filter(p => [123, 101, 102, 1, 11].includes(p.id));
 
     const sectionLabel = {
         fontSize: '0.85rem',

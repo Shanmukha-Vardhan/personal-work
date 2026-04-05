@@ -1,5 +1,26 @@
 export const projects = [
     {
+        id: 123,
+        slug: "avolve-admin",
+        title: "Avolve Admin",
+        description: "A modern, high-performance command center for restaurant operations and real-time inventory management.",
+        longDescription: "Avolve Admin is a comprehensive full-stack management suite designed for the modern hospitality industry. It integrates real-time revenue analytics, automated inventory tracking, and multi-channel order management (dine-in, takeaway, and online) into a single, high-performance dashboard.",
+        challenge: "Restaurant operations often suffer from fragmented systems for tracking orders, stock, and staff performance. This leads to data silos, order delays, and inventory discrepancies that hurt the bottom line.",
+        solution: "Developed a unified ecosystem using Next.js and Firebase that provides live data synchronization across all staff devices. The platform enables real-time collaboration between the kitchen, floor staff, and management while providing deep, actionable insights into business performance through automated reporting.",
+        image: "/images/resturent/image.png",
+        link: "https://teja-aed54.web.app",
+        github: "https://github.com/Shanmukha-Vardhan/teja-restaurant",
+        category: "Full-stack Web Application",
+        tags: ["Next.js 15", "Firebase", "Real-time", "Inventory"],
+        features: [
+            "Real-time Order Management: Live tracking for Dine-in, Takeaway, and Online (Swiggy/Zomato) orders.",
+            "Dynamic Inventory Control: Real-time stock tracking with one-click menu sync.",
+            "Deep Business Analytics: Visualizations for revenue trends, profit margins, and performance.",
+            "Multi-role Access Control: Secure interfaces for Admins, Cashiers, Kitchen, and Managers."
+        ],
+        techStack: ["Next.js 15", "React 19", "Firebase", "Lucide Icons", "CSS3"]
+    },
+    {
         id: 101,
         slug: "avolve-app",
         title: "AVOLVE",

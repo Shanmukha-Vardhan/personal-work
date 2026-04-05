@@ -2,6 +2,11 @@
 
 This file contains a list of all case studies with their associated image filenames. All images have been copied to the `imager` directory.
 
+## 0. Avolve Admin
+- **Slug:** avolve-admin
+- **Description:** A modern, high-performance command center for restaurant operations.
+- **Image:** `resturent/image.png`
+
 ## 1. Avolve
 - **Slug:** avolve-app
 - **Description:** A mental health companion designed for growth, not dependency.

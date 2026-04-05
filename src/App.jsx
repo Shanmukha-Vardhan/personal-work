@@ -14,6 +14,7 @@ import Projects from './pages/Projects';
 import About from './pages/About';
 import Avolve from './pages/Avolve';
 import ProjectDetail from './pages/ProjectDetail';
+import FloatingCTA from './components/FloatingCTA';
 // Removed: ScrollProgress, NoiseOverlay — clean flat design
 import { AnimatePresence, motion } from 'framer-motion';
 import { Analytics } from '@vercel/analytics/react';
@@ -148,6 +149,7 @@ function AppContent() {
       {isZenMode && (
         <div className="zen-toast">Zen Mode Active (Press ESC to exit)</div>
       )}
+      <FloatingCTA />
     </div>
   );
 }
